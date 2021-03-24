@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.block {
+    box-shadow: 0 0 36px 5px rgba(0, 0, 0, 0.19);
+    margin: auto;
+    margin-top: 2.5vw;
+    margin-bottom: 3.5vw;
+    width: 76vw;
+    border-radius: 1em;
+    padding: 0.4em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.main_log {
+    margin: auto;
+    text-align: center;
+    font-family: Arial;
+    color: #5b5b5b;
+}
+
+.second_log {
+    font-family: Arial;
+    color: #3e3e3e;
+}
+
+.user-input, .passw_input {
+    height: 3em;
+    margin-right: 1em;
+    vertical-align: middle;
+}
+
+.user-img, .pw_img {
+    height: 1.5em;
+}
+
+.mail_input, .password_input {
+    line-height: 2.4em;
+    padding-bottom: 0.6em;
+}
+
+.mail_input_field, .password-input-field {
+    border: #292929 1px solid;
+    border-radius: 0.5em;
+    transition: all 0.3s ease;
+    width: 16em;
+}
+
+.mail_input_field:focus {
+    outline: 0;
+}
+
+.log_in_btn {
+    padding-left: .7em;
+    background: #1975f3;
+    border-radius: 1em;
+    border: 0;
+    color: white;
+    text-align: left;
+    font-family: Arial;
+    font-size: 0.8em;
+    width: 7em;
+    height: 2em;
+    margin-bottom: 0.7em;
+    transition: all 0.3s ease;
+}
+
+.log_in_btn:hover {
+    background: #155ec3;
+    cursor: pointer;
+}
+
+.back_to_main {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    color: #666;
+    margin-bottom: 2em;
+}
+
+form {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.mainb {
+    padding-bottom: 1em;
+}

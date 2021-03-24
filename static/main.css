@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+}
+
+.block {
+    box-shadow: 0 0 36px 5px rgba(0, 0, 0, 0.19);
+    margin: auto;
+    margin-top: 2.5vw;
+    margin-bottom: 3.5vw;
+    width: 76vw;
+    border-radius: 1em;
+    padding: 0.4em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.main_h1 {
+    font-family: 'Arial';
+    color: #5b5b5b;
+    display: inline-block;
+    padding-left: 0.3em;
+    margin: 0;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.math_label2 {
+    color: #9A9A9A;
+    margin: 0;
+    font-size: 1em;
+}
+
+.register {
+    font-family: "Arial";
+    background: linear-gradient(to right, #56ccf2, #2f80ed);
+    border-radius: 1em;
+    float: right;
+    padding: 0.5em 2em 0.5em 2em;
+    margin-right: 1em;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.2em 0.5em 0 rgba(0, 0, 0, 0.3);
+}
+
+.register:hover {
+    box-shadow: 0 0.1em 0.6em 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.label_lessons {
+    font-family: 'Arial';
+    color: #5b5b5b;
+}
+
+.card {
+    box-shadow: 0 0.4em 0.6em 0.05em rgba(0, 0, 0, 0.2);
+    width: 25%;
+    height: auto;
+    border-radius: 1em;
+    padding: 0.6em;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.2em 0.6em 0 rgba(0, 0, 0, 0.2);
+}
+
+.lessons_cards {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1em;
+}
+
+h3 {
+    font-family: 'Arial';
+    color: #5b5b5b;
+}
+
+.magnet {
+    transform: rotate(45deg);
+    width: 3em;
+}
+
+.math_ico {
+    width: 3em;
+}
+
+.footer_inf {
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+footer {
+    background-color: #1975f3;
+    margin-top: auto;
+}
+
+a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+}
+
+.about_p {
+    font-family: Arial;
+}
+.back_to_main {
+}
