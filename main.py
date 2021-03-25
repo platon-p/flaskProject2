@@ -14,5 +14,10 @@ def login():
     return render_template('reg.html')
 
 
+@app.route('/math')
+def math_lesson():
+    return render_template('lessonM.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
