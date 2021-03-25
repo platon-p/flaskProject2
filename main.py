@@ -19,5 +19,10 @@ def math_lesson():
     return render_template('lessonM.html')
 
 
+@app.route('/physics')
+def ph_lesson():
+    return render_template('lessonPh.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
