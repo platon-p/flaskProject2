@@ -24,5 +24,10 @@ def ph_lesson():
     return render_template('lessonPh.html')
 
 
+@app.route('/computers')
+def inf_lesson():
+    return render_template('lessonI.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
