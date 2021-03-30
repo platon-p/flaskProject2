@@ -16,11 +16,13 @@ body {
     padding-right: 1.5em;
 }
 
-.main_log {
-    margin: auto;
-    text-align: center;
-    font-family: Arial;
+.main_h1 {
+    font-family: 'Arial';
     color: #5b5b5b;
+    display: inline-block;
+    padding-left: 0.3em;
+    margin: 0;
+
 }
 
 .second_log {
@@ -48,6 +50,7 @@ body {
     border-radius: 0.5em;
     transition: all 0.3s ease;
     width: 16em;
+    padding-left: 1em;
 }
 
 .mail_input_field:focus {
@@ -62,8 +65,8 @@ body {
     color: white;
     text-align: left;
     font-family: Arial;
-    font-size: 0.8em;
-    width: 7em;
+    font-size: 1em;
+    width: 8em;
     height: 2em;
     margin-bottom: 0.7em;
     transition: all 0.3s ease;
@@ -81,7 +84,6 @@ body {
 }
 
 form {
-    margin-top: 2em;
     margin-bottom: 1em;
 }
 
