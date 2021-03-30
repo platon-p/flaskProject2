@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="823px" height="895px" viewBox="0 0 823 895" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Untitled</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cone" transform="translate(407.000000, 362.500000) rotate(19.000000) translate(-407.000000, -362.500000) translate(74.000000, -17.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M642.612917,602.846729 C595.836619,559.345928 473.328893,527 331.887243,527 C190.445593,527 67.9378665,559.345928 21.1615689,602.846729 L0,643 C0,706.577436 149.237344,759 333,759 C516.762656,759 666,706.577436 666,643 L642.612917,602.846729 Z" id="Path"></path>
+            <path d="M642,604 L331.501065,0 L21,604 C67.7421645,560.537647 190.160496,528.220308 331.498935,528.220308 C472.837374,528.220308 595.257835,559.424213 642,604 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

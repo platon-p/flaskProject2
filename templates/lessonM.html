@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Математика</title>
     <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/cards.css">
     <meta name="viewport" content="width=765">
 </head>
 <body>
 <div class="block">
-    <a href="../"><h1 class="main_h1">Алгебра, 9 класс</h1></a>
+    <a href="../"><h1 class="main_h1">Математика, 9 класс</h1></a>
 </div>
 <div class="block">
     <div style="line-height: 1.5em;">
@@ -19,8 +20,22 @@
     </div>
     {#    здесь нужно циклом забить уроки из бд#}
     {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
+    {#    ссылка на урок#}
+    <a href="">
+        {#        ниже нужно ставить цвет от объекта ...#}
+        <div class="task-card" style="background-color: #DC8754">
+            {#            и здесь тоже нужно название  из класса#}
+            <h2 class="task_label">Последовательности</h2>
+            <img src="static/images/123-numbers.svg" class="task_image">
+        </div>
+    </a>
 
-
+    <a href="">
+        <div class="task-card" style="background-color: #A858D6">
+            <h2 class="task_label">Стереометрия</h2>
+            <img src="static/images/cone.svg" class="task_image">
+        </div>
+    </a>
 
 </div>
 

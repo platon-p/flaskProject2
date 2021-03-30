@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Математика</title>
+    <title>Физика</title>
     <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/cards.css">
     <meta name="viewport" content="width=765">
 </head>
 <body>
@@ -19,8 +20,22 @@
     </div>
     {#    здесь нужно циклом забить уроки из бд#}
     {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
+    {#    ссылка на урок#}
+    <a href="">
+        {#        ниже нужно ставить цвет от объекта ...#}
+        <div class="task-card" style="background-color: #EB6A7D">
+            {#            и здесь тоже нужно название  из класса#}
+            <h2 class="task_label">Электромагнитные волны</h2>
+            <img src="static/images/wave.svg" class="task_image">
+        </div>
+    </a>
 
-
+    <a href="">
+        <div class="task-card" style="background-color: #A858D6">
+            <h2 class="task_label">Строение атома</h2>
+            <img src="static/images/atom.svg" class="task_image">
+        </div>
+    </a>
 
 </div>
 

@@ -1,0 +1,32 @@
+.task-card {
+    width: 70%;
+    height: 6em;
+    border-radius: 1.3em;
+    line-height: 6em;
+    margin-bottom: 1em;
+    display: inline-block;
+    box-shadow: 0 0.4em 0.6em 0.05em rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    box-shadow: 0 0.2em 0.6em 0 rgba(0, 0, 0, 0.2);
+}
+
+.task_label {
+    font-family: Arial bold;
+    font-size: 1.7em;
+    color: white;
+    margin: auto;
+    margin-left: 1em;
+    display: inline-block;
+}
+
+.task_image {
+    display: inline-block;
+    color: white;
+    width: 4.8em;
+    float: right;
+    padding-top: 1em;
+    padding-right: 2em;
+}
