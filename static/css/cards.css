@@ -24,9 +24,8 @@
 
 .task_image {
     display: inline-block;
-    color: white;
-    width: 4.8em;
+    height: 4.8em;
     float: right;
-    padding-top: 1em;
+    padding-top: 0.6em;
     padding-right: 2em;
 }
