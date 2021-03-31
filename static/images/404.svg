@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1231px" height="512px" viewBox="0 0 1231 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Untitled</title>
+    <defs>
+        <linearGradient x1="60.7108152%" y1="0%" x2="25.2807617%" y2="78.0193631%" id="linearGradient-1">
+            <stop stop-color="#FFB674" offset="0%"></stop>
+            <stop stop-color="#E2723B" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FF8531" offset="0%"></stop>
+            <stop stop-color="#FF8870" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#D36C56" offset="0%"></stop>
+            <stop stop-color="#FF7F40" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.4163045%" y1="5.18921882%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#D76D54" offset="0%"></stop>
+            <stop stop-color="#F99D5E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#DD5151" offset="0%"></stop>
+            <stop stop-color="#FF8638" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="four">
+            <path d="M303.018,0 L206.03,0 L0,314.106 L0,413.803 L187.852,413.803 L187.852,512 L303.018,512 L303.018,413.804 L360,413.804 L360,303.267 L303.018,303.267 L303.018,0 Z M124.878,303.267 L187.852,205.767 L187.852,303.267 L124.878,303.267 Z" id="Shape" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <polygon id="Path-4" fill="url(#linearGradient-2)" points="7.70172494 303.267 0 314.106 0 413.803 360 413.804 360 303.267"></polygon>
+            <polygon id="Path" fill="url(#linearGradient-3)" fill-rule="nonzero" points="303.018 0 206.03 0 187.852 27.715 187.852 512 303.018 512"></polygon>
+            <polygon id="Path-2" fill="url(#linearGradient-4)" points="187.852 27.715 187.852 205.767 124.878 303.267 7.07942564 303.267"></polygon>
+        </g>
+        <g id="four-copy" transform="translate(871.000000, 0.000000)">
+            <path d="M303.018,0 L206.03,0 L0,314.106 L0,413.803 L187.852,413.803 L187.852,512 L303.018,512 L303.018,413.804 L360,413.804 L360,303.267 L303.018,303.267 L303.018,0 Z M124.878,303.267 L187.852,205.767 L187.852,303.267 L124.878,303.267 Z" id="Shape" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <polygon id="Path-4" fill="url(#linearGradient-2)" points="7.70172494 303.267 0 314.106 0 413.803 360 413.804 360 303.267"></polygon>
+            <polygon id="Path" fill="url(#linearGradient-3)" fill-rule="nonzero" points="303.018 0 206.03 0 187.852 27.715 187.852 512 303.018 512"></polygon>
+            <polygon id="Path-2" fill="url(#linearGradient-4)" points="187.852 27.715 187.852 205.767 124.878 303.267 7.07942564 303.267"></polygon>
+        </g>
+        <path d="M615.564195,0 C745.582565,0 803,126.791313 803,254.184678 C803,381.578043 747.452899,512 615.564195,512 C483.675491,512 428,383.098731 428,254.184678 C428,125.270625 485.545825,0 615.564195,0 Z M610.95093,79 C539.654649,79 500,174.141888 500,255.88617 C500,337.630452 542.320844,432 610.95093,432 C679.581016,432 722,347.032319 722,255.88617 C722,164.740021 682.247211,79 610.95093,79 Z" id="Combined-Shape" fill="url(#linearGradient-5)"></path>
+    </g>
+</svg>

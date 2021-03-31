@@ -3,6 +3,10 @@ body {
     min-width: 765px;
 }
 
+.logo_img {
+    width: 2em;
+}
+
 .block {
     box-shadow: 0 0 36px 5px rgba(0, 0, 0, 0.19);
     margin: auto;
@@ -83,12 +87,7 @@ h3 {
     color: #5b5b5b;
 }
 
-.magnet {
-    transform: rotate(45deg);
-    width: 3em;
-}
-
-.math_ico {
+.ico {
     width: 3em;
 }
 
