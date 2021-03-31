@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>404 error</title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <link rel="stylesheet" href="static/css/cards.css">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/main.css") }}">
     <meta name="viewport" content="width=765">
 </head>
 <body>
-<img src="static/images/404.svg" alt="" style="transform: scale(0.37);">
+<img src=" {{ url_for("static", filename="images/404.svg") }}" alt="" style="transform: scale(0.37);">
 <h1 class="main_h1" align="center">Страница не найдена</h1>
-
+<br>
+<div align="center" style="margin: 0 auto 0 auto">
+    <a href="/" style="width: 16em" class="register">Вернуться на главную</a>
+</div>
 </body>
 </html>
