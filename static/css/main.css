@@ -24,8 +24,7 @@ body {
     color: #5b5b5b;
     display: inline-block;
     padding-left: 0.3em;
-    margin: 0;
-
+    vertical-align: middle;
 }
 
 body {
@@ -42,7 +41,7 @@ body {
 
 .register {
     font-family: "Arial";
-    background: linear-gradient(to right, #56ccf2, #2f80ed);
+    background: #2f80ed;
     border-radius: 1em;
     float: right;
     padding: 0.5em 2em 0.5em 2em;
@@ -109,5 +108,28 @@ a {
 .about_p {
     font-family: Arial;
 }
-.back_to_main {
+
+.my-profile {
+    float: right;
+    line-height: 2.2em;
+    margin: 0.4em;
+}
+
+.avatar-img {
+    height: 2em;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+.user-label {
+    display: inline-block;
+    font-family: 'Arial';
+    color: #5b5b5b;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.inner-header, .register {
+    display: inline-block;
+    line-height: 100%;
 }

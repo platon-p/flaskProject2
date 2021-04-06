@@ -63,7 +63,7 @@ body {
     border-radius: 1em;
     border: 0;
     color: white;
-    text-align: left;
+    text-align: center;
     font-family: Arial;
     font-size: 1em;
     width: 8em;
@@ -89,4 +89,11 @@ form {
 
 .mainb {
     padding-bottom: 1em;
+}
+
+a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+}
+.registration_link {
+    color: #696969;
 }
