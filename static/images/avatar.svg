@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="642px" height="642px" viewBox="0 0 642 642" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Untitled</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.907112 0 0 0 0 0.907112 0 0 0 0 0.907112 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#9D9D9D" cx="321" cy="321" r="321"></circle>
+        <g filter="url(#filter-1)" id="icon-user">
+            <g transform="translate(136.000000, 106.000000)">
+                <path d="M185,214.238095 C332.421865,214.238095 370,292.142857 370,292.142857 L370,350.571429 C370,382.840637 343.982321,409 311.576572,409 L58.4234284,409 C26.1570526,409 0,382.774976 0,350.571429 L0,292.142857 C0,292.142857 37.5781347,214.238095 185,214.238095 Z M194.737952,175.285714 L175.262048,175.285714 C132.414295,175.285714 97.3684211,140.407329 97.3684211,97.3826597 L97.3684211,87.6428571 C97.3684211,39.2390438 136.602423,0 185,0 C233.397577,0 272.631579,39.2390438 272.631579,87.6428571 L272.631579,97.3826612 C272.631579,140.423464 232.774595,175.285714 194.737952,175.285714 Z" id="Shape" fill="#000000"></path>
+            </g>
+        </g>
+    </g>
+</svg>
