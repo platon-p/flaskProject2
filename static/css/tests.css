@@ -1,0 +1,9 @@
+.radio-label {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.radio-b {
+    margin-bottom: 0.8em;
+    margin-right: 0.5em;
+    appearance: none;
+}

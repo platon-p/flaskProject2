@@ -31,7 +31,12 @@ def inf_lesson():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('404.html'), e
+
+
+@app.route('/physics/atomic-structure/test')
+def test_atomic_structure():
+    return render_template('tests-atomic-structure.html')
 
 
 if __name__ == '__main__':
