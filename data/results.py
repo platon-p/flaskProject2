@@ -7,7 +7,7 @@ association_table = sqlalchemy.Table(
     SqlAlchemyBase.metadata,
     sqlalchemy.Column('user_id', sqlalchemy.Integer,
                       sqlalchemy.ForeignKey('users.id')),
-    sqlalchemy.Column('test_id', sqlalchemy.Integer,
-                      sqlalchemy.ForeignKey('tests.id')),
+    sqlalchemy.Column('lessons_id', sqlalchemy.Integer,
+                      sqlalchemy.ForeignKey('lessons.id')),
     sqlalchemy.Column('result', sqlalchemy.Integer)
 )

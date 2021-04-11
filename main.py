@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import render_template, url_for
+from flask import Flask, request, url_for
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -37,6 +37,15 @@ def page_not_found(e):
 @app.route('/physics/atomic-structure/test')
 def test_atomic_structure():
     return render_template('tests-atomic-structure.html')
+
+
+@app.route('/physics/elec/test', methods=['POST', 'GET'])
+def test_elec():
+    if request.method == 'GET':
+        return render_template('test_elec.html')
+    elif request.method == 'POST':
+        print(request.form["q1"])
+        return "Форма отправлена"
 
 
 if __name__ == '__main__':

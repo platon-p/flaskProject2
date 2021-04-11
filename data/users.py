@@ -18,6 +18,6 @@ class User(SqlAlchemyBase, UserMixin):
     school_class = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, nullable=True)
     admin = sqlalchemy.Column(sqlalchemy.Boolean, nullable=True)
-    results = orm.relation("Test",
+    results = orm.relation("Lessons",
                            secondary="results",
                            backref="users")
