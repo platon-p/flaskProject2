@@ -1,101 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Физика</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tests.css') }}">
-    <meta name="viewport" content="width=765">
-</head>
-<body>
-<div class="block">
-    <a href="/physics"><h1 class="main_h1">Физика, 9 класс </h1></a>
-</div>
+{% extends "base.html" %}
 
-<div class="block">
-    <div style="line-height: 1.5em;">
-        <a href="/physics">
-            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
-                 style="width: 1.7em; vertical-align: middle">
-        </a>
-        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Тест. Электромагнитные волны</h2>
+{% block content %}
+<form action="" method="post" novalidate>
+    <div>
+        <input id="csrf_token" name="csrf_token" type="hidden"
+               value="IjdhOTRkZDNhMDE2MzkyYzVhMGVkMzFjMGU1NTU4ZjY4NjlhOWNmODYi.YHQSWg.RBE5dieEwEu5c2zZoiNrnKCBjIA">
     </div>
 
-    <form method="post" class="test-form">
-        <div>
-            <h3>1.Согласно теории Максвелла электромагнитные волны <i>излучаются</i>:</h3>
-            <div>
-                <input type="radio" name="q1" id="q1o1">
-                <label for="q1o1" class="radio-label">только при равномерном движении электронов по прямой</label>
-                <br>
-                <input type="radio" name="q1" id="q1o2">
-                <label for="q1o2" class="radio-label">только при гармонических колебаниях заряда</label>
-                <br>
-                <input type="radio" name="q1" id="q1o3">
-                <label for="q1o3" class="radio-label">только при равномерном движении заряда по окружности</label>
-                <br>
-                <input type="radio" name="q1" id="q1o4">
-                <label for="q1o4" class="radio-label">при любом неравномерном движении заряда</label>
-            </div>
-        </div>
+    <div>
+        <label for="one">1.Согласно теории Максвелла электромагнитные волны излучаются</label>
+        <ul id="one">
+            <li><input id="one-0" name="one" type="radio" value="только при равномерном движении электронов по прямой">
+                <label for="one-0">только при равномерном движении электронов по прямой</label></li>
+            <li><input id="one-1" name="one" type="radio" value="только при гармонических колебаниях заряда"> <label
+                    for="one-1">только при гармонических колебаниях заряда</label></li>
+            <li><input id="one-2" name="one" type="radio" value="только при равномерном движении заряда по окружности">
+                <label for="one-2">только при равномерном движении заряда по окружности</label></li>
+            <li><input id="one-3" name="one" type="radio" value="при любом неравномерном движении заряда"> <label
+                    for="one-3">при любом неравномерном движении заряда</label></li>
+        </ul>
 
-        <div>
-            <h3>2.Заряженная частица излучает электромагнитные волны</h3>
-            <div>
-                <input type="radio" name="q2" id="q2o1">
-                <label for="q2o1" class="radio-label">только при движении с ускорением</label>
-                <br>
-                <input type="radio" name="q2" id="q2o2">
-                <label for="q2o2" class="radio-label">только при движении с постоянной скоростью</label>
-                <br>
-                <input type="radio" name="q2" id="q2o3">
-                <label for="q2o3" class="radio-label">только в состоянии покоя</label>
-                <br>
-                <input type="radio" name="q2" id="q2o4">
-                <label for="q2o4" class="radio-label">как в состоянии покоя, так и при движении с постоянной скоростью</label>
-            </div>
-        </div>
 
-        <div>
-            <h3>3.Заряженная частица не излучает электромагнитные волны при</h3>
-            <div>
-                <input type="radio" name="q3" id="q3o1">
-                <label for="q3o1" class="radio-label">равномерном прямолинейном движении</label>
-                <br>
-                <input type="radio" name="q3" id="q3o2">
-                <label for="q3o2" class="radio-label">равномерном движении по окружности</label>
-                <br>
-                <input type="radio" name="q3" id="q3o3">
-                <label for="q3o3" class="radio-label">колебательном движении</label>
-                <br>
-                <input type="radio" name="q3" id="q3o4">
-                <label for="q3o4" class="radio-label">любом движении с ускорением</label>
-            </div>
-        </div>
+    </div>
 
-        <div>
-            <h3>4.Какое из приведенных ниже природных явлений не может служить примером излучения электромагнитных волн?</h3>
-            <div>
-                <input type="radio" name="q4" id="q4o1">
-                <label for="q4o1" class="radio-label">Молния</label>
-                <br>
-                <input type="radio" name="q4" id="q4o2">
-                <label for="q4o2" class="radio-label">Полярное сияние</label>
-                <br>
-                <input type="radio" name="q4" id="q4o3">
-                <label for="q4o3" class="radio-label">Излучение звезд</label>
-                <br>
-                <input type="radio" name="q4" id="q4o4">
-                <label for="q4o4" class="radio-label">Гром</label>
-            </div>
-        </div>
-        <br>
-        <button class="log_in_btn">Отправить</button>
-    </form>
-    <br>
-</div>
+    <div>
+        <label for="two">2.Заряженная частица излучает электромагнитные волны</label>
+        <ul id="two">
+            <li><input id="two-0" name="two" type="radio" value="только при движении с ускорением"> <label for="two-0">только
+                при движении с ускорением</label></li>
+            <li><input id="two-1" name="two" type="radio" value="только при движении с постоянной скоростью"> <label
+                    for="two-1">только при движении с постоянной скоростью</label></li>
+            <li><input id="two-2" name="two" type="radio" value="только в состоянии покоя"> <label for="two-2">только в
+                состоянии покоя</label></li>
+            <li><input id="two-3" name="two" type="radio"
+                       value="как в состоянии покоя, так и при движении с постоянной скоростью"> <label for="two-3">как
+                в состоянии покоя, так и при движении с постоянной скоростью</label></li>
+        </ul>
 
-</body>
-</html>
+
+    </div>
+
+    <div>
+        <label for="three">3.Заряженная частица не излучает электромагнитные волны при</label>
+        <ul id="three">
+            <li><input id="three-0" name="three" type="radio" value="равномерном прямолинейном движении"> <label
+                    for="three-0">равномерном прямолинейном движении</label></li>
+            <li><input id="three-1" name="three" type="radio" value="равномерном движении по окружности"> <label
+                    for="three-1">равномерном движении по окружности</label></li>
+            <li><input id="three-2" name="three" type="radio" value="колебательном движении"> <label for="three-2">колебательном
+                движении</label></li>
+            <li><input id="three-3" name="three" type="radio" value="любом движении с ускорением"> <label for="three-3">любом
+                движении с ускорением</label></li>
+        </ul>
+
+
+    </div>
+
+    <div>
+        <label for="four">4.Какое из приведенных ниже природных явлений не может служить примером излучения
+            электромагнитных волн?</label>
+        <ul id="four">
+            <li><input id="four-0" name="four" type="radio" value="Молния"> <label for="four-0">Молния</label></li>
+            <li><input id="four-1" name="four" type="radio" value="Полярное сияние"> <label for="four-1">Полярное
+                сияние</label></li>
+            <li><input id="four-2" name="four" type="radio" value="Излучение звезд"> <label for="four-2">Излучение
+                звезд</label></li>
+            <li><input id="four-3" name="four" type="radio" value="Гром"> <label for="four-3">Гром</label></li>
+        </ul>
+
+
+    </div>
+
+    <div>
+        <input id="btn" name="btn" type="submit" value="Отправить">
+
+    </div>
+
+</form>
+{% endblock %}
