@@ -35,6 +35,11 @@ def inf_lesson():
     return render_template('lessonI.html')
 
 
+@app.route('/computers/binary')
+def binary_lesson():
+    return render_template('Lesson_I_Two.html')
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), e
