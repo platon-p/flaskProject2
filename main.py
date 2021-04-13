@@ -40,6 +40,11 @@ def binary_lesson():
     return render_template('Lesson_I_Two.html')
 
 
+@app.route('/computers/cpu')
+def cpu_lesson():
+    return render_template('cpu.html')
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), e
