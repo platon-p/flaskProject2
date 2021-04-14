@@ -37,7 +37,7 @@ def inf_lesson():
 
 @app.route('/computers/binary')
 def binary_lesson():
-    return render_template('Lesson_I_Two.html')
+    return render_template('binary.html')
 
 
 @app.route('/computers/cpu')
