@@ -25,6 +25,11 @@ def math_lesson():
     return render_template('lessonM.html')
 
 
+@app.route('/math/sequences')
+def sequences_lesson():
+    return render_template('sequences.html')
+
+
 @app.route('/physics')
 def ph_lesson():
     return render_template('lessonPh.html')
