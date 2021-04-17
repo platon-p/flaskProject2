@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Регистрация</title>
+    <title>Вход</title>
     <link rel="stylesheet" href="static/css/reg.css">
     <link rel="stylesheet" href="static/css/main.css">
     <meta name="viewport" content="width=765">
@@ -23,17 +23,17 @@
     </div>
     <br>
 
-    <form action="">
+    <form action="" method="post">
         <div style="width: 50%;">
             <div class="mail_input">
                 <img src="static/images/user.svg" alt="" class="user-input user-img">
                 <label>
-                    <input type="email" class="user-input mail_input_field" placeholder="Почта">
+                    <input type="email" class="user-input mail_input_field" placeholder="Почта" name="mail_input">
                 </label>
             </div>
             <div class="password_input">
                 <img src="static/images/key.svg" alt="" class="passw_input pw_img">
-                <input type="password" class="passw_input password-input-field" placeholder="Пароль">
+                <input type="password" class="passw_input password-input-field" placeholder="Пароль" name="password_input">
             </div>
             <button class="log_in_btn" style="width: 15em">Войти</button>
         </div>

@@ -11,19 +11,21 @@
 </head>
 <body>
 <div class="header block">
-    {#    <img src="static/images/logo.svg" class="logo_img">#}
+    {% if not user_id%}
+    {# <img src="static/images/logo.svg" class="logo_img">#}
     <div class="inner-header">
         <h1 class="main_h1">Моя школа</h1>
     </div>
     <a href="/login" class="register">Войти</a>
-    {#    если уже вошел#}
-
-    {#    <a href="/profile">#}
-    {#        <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">#}
-    {#            <img src="static/images/avatar.svg" alt="" class="avatar-img">#}
-    {#            <h4 class="user-label">*Владимир Багров*</h4>#}
-    {#        </div>#}
-    {#    </a>#}
+    {# если уже вошел#}
+    {% else %}
+    <a href="/profile">
+        <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+            <img src="static/images/avatar.svg" alt="" class="avatar-img">
+            <h4 class="user-label">{{user_name}} {{user_surname}}</h4>
+        </div>
+    </a>
+    {% endif %}
 </div>
 <main role="main" class="container">
     {% block content %}{% endblock %}

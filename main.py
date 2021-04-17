@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template
 
 from data.db_session import create_session, global_init
 from data.users import User
@@ -15,9 +15,21 @@ def hello_world():
     return render_template('ind.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    return render_template('reg.html')
+    if request.method == 'GET':
+        return render_template('reg.html')
+    elif request.method == 'POST':
+        global_init("db/project.db")
+        db_sess = create_session()
+        req = db_sess.query(User).filter(User.email == "".join(request.form["mail_input"]))
+        if len(list(req)) == 1:
+            user = list(req)[0]
+            password = user.password
+            if password == "".join(request.form["password_input"]):
+                return render_template('ind.html', user_id=user.id,
+                                       user_surname=user.surname,
+                                       user_name=user.name)
 
 
 @app.route('/math')
@@ -105,6 +117,11 @@ def registration():
                 return render_template('registration.html')
         except Exception:
             return render_template('registration.html')
+
+
+@app.route("/profile")
+def profile():
+    print(request.user_id)
 
 
 if __name__ == '__main__':
