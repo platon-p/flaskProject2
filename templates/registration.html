@@ -1,53 +1,58 @@
-{% extends "base.html" %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Вход</title>
+    <link rel="stylesheet" href="static/css/reg.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <meta name="viewport" content="width=765">
+</head>
+<body>
+<div class="block"><h1 class="main_h1">Моя школа</h1></div>
+<div class="block mainb" style="padding-bottom: 1em;">
 
-{% block content %}
-    <form action="" method="post" novalidate>
-        <div>
-            <input id="csrf_token" name="csrf_token" type="hidden"
-                   value="IjdhOTRkZDNhMDE2MzkyYzVhMGVkMzFjMGU1NTU4ZjY4NjlhOWNmODYi.YHQlpw.tKXhYGwypS6fGC85r3vvQtt8RAM">
-        </div>
+    <div style="line-height: 0.8em; margin-top: 0.5em;">
+        <a href="../">
+            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                 style="width: 1.7em; vertical-align: middle">
+        </a>
+        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Добро
+            пожаловать!</h2>
+    </div>
+    <br>
 
-        <div>
-            <label for="surname">Фамилия</label>
-            <input class="user-input mail_input_field" id="surname" name="surname" required type="text" value="">
-
-        </div>
-
-        <div>
-            <label for="name">Имя</label>
-            <input id="name" name="name" required type="text" value="">
-
-        </div>
-
-        <div>
-            <label for="email">Почта</label>
-            <input id="email" name="email" required type="text" value="">
-
-        </div>
-
-        <div>
-            <label for="password">Пароль</label>
-            <input id="password" name="password" required type="password" value="">
-
-        </div>
-
-        <div>
-            <label for="age">Возраст</label>
-            <input id="age" name="age" required type="text" value="">
-
-        </div>
-
-        <div>
-            <label for="school_class">Класс</label>
-            <input id="school_class" name="school_class" required type="text" value="">
-
-        </div>
-
-        <div>
-            <label for="submit">Зарегистрироваться</label>
-            <input id="submit" name="submit" type="submit" value="Зарегистрироваться">
-
-        </div>
-
-    </form>
-{% endblock %}
+    <div >
+        <form action="" method="post">
+            <div style="width: 50%;">
+                <br>
+                <label> &ensp;
+                    <input type="text" class="user-input mail_input_field" placeholder="Фамилия" name="surname">
+                </label>
+                <br>
+                <br>
+                <label> &ensp;
+                    <input type="text" class="user-input mail_input_field" placeholder="Имя" name="name">
+                </label>
+                <br>
+                <br>
+                <label><font color="red">*</font>
+                    <input type="email" class="user-input mail_input_field" placeholder="Почта" name="mail">
+                </label>
+                <br>
+                <br>
+                <label><font color="red">*</font>
+                    <input type="password" class="user-input mail_input_field" placeholder="Пароль" name="password">
+                </label>
+                <br>
+                <br>
+                <br>
+                <button class="log_in_btn" style="width: 15em">Регистрация</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

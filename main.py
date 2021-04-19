@@ -98,7 +98,7 @@ def test_elec():
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
     if request.method == 'GET':
-        return render_template('registration.html')
+        return render_template('registration.html', title='Моя школа')
     elif request.method == 'POST':
         try:
             global_init("db/project.db")
