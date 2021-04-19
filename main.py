@@ -4,7 +4,8 @@ from flask import Flask, request, render_template
 
 from data.db_session import create_session, global_init
 from data.users import User
-from tests import TestForm
+
+# from tests import TestForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -12,7 +13,12 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 @app.route('/')
 def hello_world():
-    return render_template('ind.html')
+    return render_template('ind.html', title='Моя школа')
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), e
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -34,7 +40,7 @@ def login():
 
 @app.route('/math')
 def math_lesson():
-    return render_template('lessonM.html')
+    return render_template('lessonM.html', title='Математика')
 
 
 @app.route('/math/sequences')
@@ -44,7 +50,7 @@ def sequences_lesson():
 
 @app.route('/physics')
 def ph_lesson():
-    return render_template('lessonPh.html')
+    return render_template('lessonPh.html', title='Физика')
 
 
 @app.route('/physics/atomic-structure')
@@ -52,9 +58,14 @@ def atomic_structure_leson():
     return render_template('atomic-structure.html')
 
 
+@app.route('/physics/atomic-structure/test')
+def test_atomic_structure():
+    return render_template('tests-atomic-structure.html')
+
+
 @app.route('/computers')
 def inf_lesson():
-    return render_template('lessonI.html')
+    return render_template('lessonI.html', title='Информатика')
 
 
 @app.route('/computers/binary')
@@ -67,16 +78,6 @@ def cpu_lesson():
     return render_template('cpu.html')
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), e
-
-
-@app.route('/physics/atomic-structure/test')
-def test_atomic_structure():
-    return render_template('tests-atomic-structure.html')
-
-
 @app.route('/physics/elec/test', methods=['POST', 'GET'])
 def test_elec():
     if request.method == 'GET':
@@ -86,12 +87,12 @@ def test_elec():
         return "Форма отправлена"
 
 
-@app.route('/bib', methods=['GET', 'POST'])
-def bib():
-    form = TestForm()
-    if form.validate_on_submit():
-        return "Форма отправлена"
-    return render_template('test.html', form=form)
+# @app.route('/bib', methods=['GET', 'POST'])
+# def bib():
+#     form = TestForm()
+#     if form.validate_on_submit():
+#         return "Форма отправлена"
+#     return render_template('test.html', form=form)
 
 
 @app.route("/registration", methods=['POST', 'GET'])

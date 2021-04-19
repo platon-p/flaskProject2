@@ -16,7 +16,8 @@
 
     <div style="line-height: 0.8em; margin-top: 0.5em;">
         <a href="../">
-            <img src="static/images/arrow.svg" alt="" style="width: 1.7em; vertical-align: middle">
+            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                 style="width: 1.7em; vertical-align: middle">
         </a>
         <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Добро
             пожаловать!</h2>
@@ -26,14 +27,15 @@
     <form action="" method="post">
         <div style="width: 50%;">
             <div class="mail_input">
-                <img src="static/images/user.svg" alt="" class="user-input user-img">
+                <img src="{{ url_for('static', filename='images/user.svg') }}" alt="" class="user-input user-img">
                 <label>
                     <input type="email" class="user-input mail_input_field" placeholder="Почта" name="mail_input">
                 </label>
             </div>
             <div class="password_input">
-                <img src="static/images/key.svg" alt="" class="passw_input pw_img">
-                <input type="password" class="passw_input password-input-field" placeholder="Пароль" name="password_input">
+                <img src="{{ url_for('static', filename='images/key.svg') }}" alt="" class="passw_input pw_img">
+                <input type="password" class="passw_input password-input-field" placeholder="Пароль"
+                       name="password_input">
             </div>
             <button class="log_in_btn" style="width: 15em">Войти</button>
         </div>

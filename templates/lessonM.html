@@ -1,37 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<body>
-<div class="block">
-    <a href="../"><h1 class="main_h1">Математика, 9 класс</h1></a>
-</div>
-<div class="block">
-    <div style="line-height: 1.5em;">
-        <a href="../">
-            <img src="static/images/arrow.svg" alt="" style="width: 1.7em; vertical-align: middle">
+    <body>
+    {#<div class="block">#}
+    {#    <a href="../"><h1 class="main_h1">Математика, 9 класс</h1></a>#}
+    {#</div>#}
+    <div class="block">
+        <div style="line-height: 1.5em;">
+            <a href="../">
+                <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                     style="width: 1.7em; vertical-align: middle">
+            </a>
+            <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Уроки</h2>
+        </div>
+        {#    здесь нужно циклом забить уроки из бд#}
+        {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
+        {#    ссылка на урок#}
+        <a href="">
+            {#        ниже нужно ставить цвет от объекта ...#}
+            <div class="task-card" style="background-color: #DC8754">
+                {#            и здесь тоже нужно название  из класса#}
+                <h2 class="task_label">Последовательности</h2>
+                <img src="{{ url_for('static', filename='images/123-numbers.svg') }}" class="task_image">
+            </div>
         </a>
-        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Уроки</h2>
+
+        <a href="">
+            <div class="task-card" style="background-color: #A858D6">
+                <h2 class="task_label">Стереометрия</h2>
+                <img src="{{ url_for('static', filename='images/cone.svg') }}" class="task_image">
+            </div>
+        </a>
+
     </div>
-    {#    здесь нужно циклом забить уроки из бд#}
-    {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
-    {#    ссылка на урок#}
-    <a href="">
-        {#        ниже нужно ставить цвет от объекта ...#}
-        <div class="task-card" style="background-color: #DC8754">
-            {#            и здесь тоже нужно название  из класса#}
-            <h2 class="task_label">Последовательности</h2>
-            <img src="static/images/123-numbers.svg" class="task_image">
-        </div>
-    </a>
 
-    <a href="">
-        <div class="task-card" style="background-color: #A858D6">
-            <h2 class="task_label">Стереометрия</h2>
-            <img src="static/images/cone.svg" class="task_image">
-        </div>
-    </a>
-
-</div>
-
-</body>
+    </body>
 {% endblock %}

@@ -3,50 +3,51 @@
 {% block content %}
     <form action="" method="post" novalidate>
         <div>
-            <input id="csrf_token" name="csrf_token" type="hidden" value="IjdhOTRkZDNhMDE2MzkyYzVhMGVkMzFjMGU1NTU4ZjY4NjlhOWNmODYi.YHQlpw.tKXhYGwypS6fGC85r3vvQtt8RAM">
+            <input id="csrf_token" name="csrf_token" type="hidden"
+                   value="IjdhOTRkZDNhMDE2MzkyYzVhMGVkMzFjMGU1NTU4ZjY4NjlhOWNmODYi.YHQlpw.tKXhYGwypS6fGC85r3vvQtt8RAM">
         </div>
 
-            <div>
-                <label for="surname">Фамилия</label>
-                <input id="surname" name="surname" required type="text" value="">
+        <div>
+            <label for="surname">Фамилия</label>
+            <input class="user-input mail_input_field" id="surname" name="surname" required type="text" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="name">Имя</label>
-                <input id="name" name="name" required type="text" value="">
+        <div>
+            <label for="name">Имя</label>
+            <input id="name" name="name" required type="text" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="email">Почта</label>
-                <input id="email" name="email" required type="text" value="">
+        <div>
+            <label for="email">Почта</label>
+            <input id="email" name="email" required type="text" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="password">Пароль</label>
-                <input id="password" name="password" required type="password" value="">
+        <div>
+            <label for="password">Пароль</label>
+            <input id="password" name="password" required type="password" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="age">Возраст</label>
-                <input id="age" name="age" required type="text" value="">
+        <div>
+            <label for="age">Возраст</label>
+            <input id="age" name="age" required type="text" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="school_class">Класс</label>
-                <input id="school_class" name="school_class" required type="text" value="">
+        <div>
+            <label for="school_class">Класс</label>
+            <input id="school_class" name="school_class" required type="text" value="">
 
-            </div>
+        </div>
 
-            <div>
-                <label for="submit">Зарегистрироваться</label>
-                <input id="submit" name="submit" type="submit" value="Зарегистрироваться">
+        <div>
+            <label for="submit">Зарегистрироваться</label>
+            <input id="submit" name="submit" type="submit" value="Зарегистрироваться">
 
-            </div>
+        </div>
 
     </form>
 {% endblock %}
