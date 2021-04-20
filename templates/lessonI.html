@@ -2,9 +2,6 @@
 
 {% block content %}
 <body>
-{#<div class="block">#}
-{#    <a href="../"><h1 class="main_h1">Информатика, 9 класс</h1></a>#}
-{#</div>#}
 <div class="block">
     <div style="line-height: 1.5em;">
         <a href="../">
@@ -16,9 +13,7 @@
     {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
     {#    ссылка на урок#}
     <a href="/computers/binary">
-        {#        ниже нужно ставить цвет от объекта ...#}
         <div class="task-card" style="background-color: #71D780">
-            {#            и здесь тоже нужно название  из класса#}
             <h2 class="task_label">Двоичная система</h2>
             <img src="{{ url_for('static', filename='images/binary.svg') }}" class="task_image">
         </div>

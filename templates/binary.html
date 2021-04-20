@@ -1,51 +1,84 @@
 <!doctype html>
-  <html lang="en">
-    <head>
-    </head>
-    <body>
-      <div class="block">
-        <h1>Двоичная система</h1>
-        <style>
-        </style>
-      </div>
-      <div class="block">
-        <p><big><strong>Двоичной системой счисления</strong> называется позиционная система счисления с основанием 2.<br>
-          Для записи чисел в двоичной системе счисления используются только две цифры: 0 и 1.</big>
-        </p>
-        <p><big>Благодаря непосредственной реализации в цифровых электронных схемах на логических вентилях,<br>
-          двоичная система используется практически во всех современных компьютерах и прочих вычислительных электронных устройствах.</big>
-        </p>
-        <h2>Перевод чисел из двоичной системы счисления в десятичную</h2>
-        <p><big>На основании формулы (1) для целых двоичных чисел можно записать:</big></p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h2 class="task_label">а<sub>n-1</sub>а<sub>n-2</sub>...а<sub>1</sub>а<sub>0</sub>
-            = a<sub>n-1</sub> • 2<sup>n-1</sup> + а<sub>n-2</sub> • 2<sup>n-2</sup> +...+ а<sub>0</sub> • 20. (1)
-          </h2>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информатика</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tests.css') }}">
+    <meta name="viewport" content="width=765">
+</head>
+<body>
+<div class="header block">
+    <h1 class="main_h1">Информатика</h1>
+</div>
+<div class="block">
+    <div class="block-l">
+        <h1 class="label_lessons" align="center">Двоичная система</h1>
+        <br>
+        <div style="line-height: 1.5em;">
+            <a href="/computers">
+                <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                     style="width: 1.7em; vertical-align: middle">
+            </a>
+            <h3 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">
+                Информатика</h3>
         </div>
-        <p><big>Например:</big></p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h2 class="task_label">100112 = 1 • 2<sup>4</sup> + 0 • 2<sup>3</sup> + 0 • 2<sup>2</sup>
-            + 1 • 2<sup>1</sup> + 1 • 2<sup>0</sup> = 2<sup>4</sup> + 2<sup>1</sup> + 2<sup>0</sup> = 16 + 2 + 1 = 19<sub>10</sub>.
-          </h2>
-        </div>
-        <p><big>Такая форма записи «подсказывает» правило перевода натуральных двоичных чисел в десятичную систему счисления:<br>
-          необходимо вычислить сумму степеней двойки, соответствующих единицам в свёрнутой форме записи двоичного числа.</big>
+        <p class="lesson-p"><strong>Двоичной системой счисления</strong> называется позиционная система счисления с
+            основанием 2.
+            Для записи чисел в двоичной системе счисления используются только две цифры: <i>0</i> и <i>1</i>.
         </p>
-        <h2>Перевод десятичного числа в двоичное</h2>
-        <p><big>Одним из алгоритмов перевода десятичного числа в двоичное является деление нацело на два с последующим "сбором" двоичного числа из остатков. <br>
-          Переведем таким образом число 22 в двоичное представление.</big>
-        <p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h2>
-          22 / 2 = 11 (остаток 0) <br>
-          11 / 2 = 5 (остаток 1) <br>
-          5 / 2 = 2 (остаток 1) <br>
-          2 / 2 = 1 (остаток 0) <br>
-          1 / 2 = 0 (остаток 1) 
-          <h2>
-        </div>
-        <p><big>Собираем остатки вместе, начиная с конца: 10110<sub>2</sub>.</big></p>
-        <a href="javascript:history.back()"><h3>Вернуться к урокам</h3></a>
-      </div>
-    </body>
-  </html>
+        <p class="lesson-p">Благодаря непосредственной реализации в цифровых электронных схемах на логических вентилях,
+            двоичная система используется практически во всех современных компьютерах и прочих вычислительных
+            электронных устройствах.</p>
+        <br>
+        <br>
+        <br>
+        <h2 class="label_lessons" align="center">
+            Перевод чисел из десятичной системы счисления в двоичную
+        </h2>
+        <br>
+        <p class="lesson-p">Алгоритм перевода десятичного числа в двоичную:</p>
+        <ol class="lesson-p">
+            <li>Разделить исходное число на 2 с остатком</li>
+            <li>Разделить частное на 2 с остатком</li>
+            <li>Продолжать, пока частное не достигнет единицы</li>
+            <li>Записать остатки в обратном порядке</li>
+        </ol>
+        <p class="lesson-p">Предлагаем вам ознакомиться с алгоритмом на примере:</p>
+        <iframe width="540em" height="325em" src="https://www.youtube.com/embed/pwyp38gAyRo"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        <br>
+        <br>
+        <h2 class="label_lessons" align="center">
+            Перевод чисел из двоичной системы счисления в десятичную
+        </h2>
+        <p class="lesson-p">Алгоритм перевода чисел из двоичной системы счисления в десятичную:</p>
+        <ol class="lesson-p">
+            <li>Расставить номера, начиная с конца, над каждой цифрой числа</li>
+            <li>Умножить каждую цифру на 2 в той степени, под каким номером она расположена</li>
+            <li>Сложить каждое такое произведение</li>
+        </ol>
+        <p class="lesson-p">Предлагаем вам ознакомиться с алгоритмом на примере:</p>
+        <iframe width="540em" height="325em" src="https://www.youtube.com/embed/jeSErJeu_7Q"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        <br>
+        <br>
+        <a href="/computers/binary/test">
+            <div class="task-card" style="background-color: #71D780">
+                <h2 class="task_label">Пройти тест</h2>
+                <img src="{{ url_for('static', filename='images/binary.svg') }}" class="task_image">
+            </div>
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

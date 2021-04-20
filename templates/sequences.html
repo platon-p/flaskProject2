@@ -1,75 +1,126 @@
-  <!doctype html>
-  <html lang="en">
-    <head>
-    </head>
-    <body>
-      <div class="block">
-        <h1>Последовательности</h1>
-        <style>
-        </style>
-      </div>
-      <div class="block">
-        <p><big>В математике <strong>последовательность</strong> — это пронумерованный набор каких-либо объектов, <br>
-          среди которых допускаются повторения, причём порядок объектов имеет значение.</big>
-        </p>
-        <p><big>Числа, образующие последовательность, называют членами последовательности; число, стоящее на первом месте, <br>
-          называют первым членом, на втором месте - вторым членом, на сотом месте - сотым членом, на месте с номером n - n-м членом последовательности.</big>
-        </p>
-        <p><big>Обозначают члены последовательности буквами с индексами, указывающими на порядковый номер члена:</big>
-        </p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>a<sub>1</sub>; a<sub>2</sub>; a<sub>3</sub>; a<sub>4</sub>; ...; a<sub>100</sub>; ...; a<sub>n</sub>; ... .</big></h3>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Математика</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tests.css') }}">
+    <meta name="viewport" content="width=765">
+</head>
+<body>
+<div class="header block">
+    <h1 class="main_h1">Математика</h1>
+</div>
+<div class="block">
+    <div class="block-l">
+        <h1 class="label_lessons" align="center">Последовательности</h1>
+        <br>
+        <div style="line-height: 1.5em;">
+            <a href="/math">
+                <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                     style="width: 1.7em; vertical-align: middle">
+            </a>
+            <h3 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">
+                Математика</h3>
         </div>
-        <p><big>Член последовательности, следующий за членом с номером n, имеет номер n + 1, поэтому его 
-          обозначают символом a<sub>n-1</sub>.<br>А член, предшествующий a<sub>n</sub>, обозначается a<sub>n-1</sub>. Саму 
-          последовательность принято обозначать так: <strong>(a<sub>n</sub>)</strong></big>
+        <p class="lesson-p">В математике <i>последовательность</i> — это пронумерованный набор каких-либо объектов,
+            среди которых допускаются повторения, причём порядок объектов имеет значение.
         </p>
-        <h2>Примеры последовательностей:</h2>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>1; 2; 3; 4; 5; 6; 7; 8; 9; 10; ... (последовательность натуральных чисел)</big></h3>
-        </div>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>1; 0; 1; 0; 1; 0; 1; 0; 1; 0; ... (последовательность из нуля и единицы)</big></h3>
-        </div>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>3; 3; 3; 3; 3; 3; 3; 3; 3; 3; ... (последовательность из троек - <strong>постоянная</strong>)</big></h3>
-        </div>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>2; 4; 6; 8; 10; 12; 14; 16; 18; 20; ... (последовательность четных чисел)</big></h3>
-        </div>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>1; 1; 2; 3; 5; 8; 13; 21; 34; 55; ... (последовательность Фибоначчи)</big></h3>
-        </div>
-        <p><big>Рассмотрим поподробнее последнюю из них. Правила её построения: <br>
-          a<sub>1</sub> = 1;<br>a<sub>2</sub>=1<br>a<sub>3</sub>=a<sub>2</sub> + a<sub>1</sub>;<br>a<sub>4</sub>
-          = a<sub>3</sub> + a<sub>2</sub>;<br>a<sub>5</sub> = a<sub>4</sub> + a<sub>3</sub>;</big>
+        <p class="lesson-p">Числа, образующие последовательность, называют <strong>членами последовательности</strong>;
+            число, стоящее на
+            первом месте, называют <strong>первым членом</strong>, на втором месте - вторым членом, на сотом месте -
+            сотым членом, на месте с номером n
+            - n-м членом последовательности.
         </p>
-        <p><big>Для члена с произвольным номером n соответствующее равенство будет выглядеть так:</big>
+        <p class="lesson-p">Обозначают члены последовательности буквами с индексами, указывающими на порядковый номер
+            члена:</p>
+
+        <img src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{150}&space;\huge&space;a_1,&space;a_2,&space;a_3,&space;...,&space;a_n">
+
+        <p class="lesson-p">Член последовательности, следующий за членом с номером n, имеет номер n + 1, поэтому его
+            обозначают символом <img
+                    src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{80}&space;\huge&space;a_{n+1}"
+                    title="\huge a_{n-1}"/>.
+            А член, предшествующий <img
+                    src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{80}&space;\huge&space;a_{n}"
+                    title="\huge a_{n-1}"/>, обозначается <img
+                    src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{80}&space;\huge&space;a_{n-1}"
+                    title="\huge a_{n-1}"/>. Саму последовательность принято обозначать так: (an)</p>
+
+        <p class="lesson-p">Примеры последовательностей:
+            <br>
+            1; 2; 3; 4; 5; 6; 7; 8; 9; 10; ... (последовательность натуральных чисел)
+            <br>
+            1; 0; 1; 0; 1; 0; 1; 0; 1; 0; ... (последовательность из нуля и единицы)
+            <br>
+            3; 3; 3; 3; 3; 3; 3; 3; 3; 3; ... (последовательность из троек - постоянная)
+            <br>
+            2; 4; 6; 8; 10; 12; 14; 16; 18; 20; ... (последовательность четных чисел)
+            <br>
+            1; 1; 2; 3; 5; 8; 13; 21; 34; 55; ... (последовательность Фибоначчи)
         </p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>a<sub>n</sub> = a<sub>n - 1</sub> + a<sub>n - 2</sub></big></h3>
-        </div>
-        <p><big>Таким образом, последовательность чисел Фибоначчи задаётся следующими условиями:</big>
+        <br>
+        <p class="lesson-p">Рассмотрим поподробнее последнюю из них. Правила её построения:
+            <br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_1=1" title="\LARGE a_1=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_2=1" title="\LARGE a_2=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_3=a_1+a_2"
+                 title="\LARGE a_2=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_4=a_2+a_3"
+                 title="\LARGE a_2=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_5=a_3+a_4"
+                 title="\LARGE a_2=1"/><br>
+            Для члена с произвольным номером n соответствующее равенство будет выглядеть так:
+            <br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_n=a_{n-1}&plus;a_{n-2}"
+                 title="\LARGE a_n=a_{n-1}+a_{n-2}"/>
+            <br>
+            Таким образом, последовательность чисел Фибоначчи задаётся следующим образом:
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_1=1" title="\LARGE a_1=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_2=1" title="\LARGE a_2=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_n=a_{n-1}&plus;a_{n-2}"
+                 title="\LARGE a_n=a_{n-1}+a_{n-2}"/></p>
+        <p class="lesson-p">
+            Такой способ относится к <i>рекуррентным</i><br>
+            <strong>Рекуррентная формула</strong> выражает любой член последовательности, начиная с некоторого, через
+            один или несколько
+            предыдущих членов.
+            При рекуррентном способе задания члены последовательности вычисляются поочерёдно один за другим.
         </p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>a<sub>1</sub> = 1; a<sub>2</sub> = 1; a<sub>n</sub> = a<sub>n - 1</sub> + a<sub>n - 2</sub>, где n >= 3</big></h3>
-        </div>
-        <p><big>Формула a<sub>n</sub> = a<sub>n - 1</sub> + a<sub>n - 2</sub> относится к <strong>реккурентным формулам</strong>.<br>
-          Реккурентная формула выражает любой член последовательности, начиная с некоторого, через один или несколько предыдущих
-          членов. <br> При реккурентном способе задания члены последовательности вычисляются поочерёдно один за другим.</big>
+        <p class="lesson-p">Кроме того, последовательность можно задать <i>формулой</i>, или <i>описанием</i>. Формула
+            показывает, как найти любой член последовательности, если известен порядковый номер n.
+            Такая формула называется <strong>формулой n-го члена последовательности</strong>. </p>
+        <p class="lesson-p">
+            Рассмотрим пример:
+            <br>
+            <br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;(a_n)=1&plus;2(n-1)"
+                 title="\LARGE (a_n)=1+2(n-1)"/>
         </p>
-        <p><big>Последовательность возможно задать, указав все её члены или указав общую формулу. <br>
-          Формула показывает, как найти любой член последовательности, если известен порядковый номер n.<br>
-          Такая формула называется <strong>формулой n-го члена</strong> последовательности. Рассмотрим пример: <strong>
-          a<sub>n</sub> = 2 * n - 1</strong> Таким образом:<br>a<sub>1</sub> = 2 * 1 - 1 = 1<br>
-          a<sub>2</sub> = 2 * 2 - 1 = 3<br>a<sub>3</sub> = 2 * 3 - 1 = 5<br>a<sub>4</sub> = 2 * 4 - 1 = 7<br></big>
+        <br>
+        <p class="lesson-p">Здесь <br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_1&space;=&space;1&space;&plus;&space;2(1-1)=1"
+                 title="\LARGE a_1 = 1 + 2(1-1)=1"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_2&space;=&space;1&space;&plus;&space;2(2-1)=3"
+                 title="\LARGE a_2 = 1 + 2(2-1)=3"/><br>
+            <img src="https://latex.codecogs.com/png.latex?\dpi{80}&space;\LARGE&space;a_3&space;=&space;1&space;&plus;&space;2(3-1)=5"
+                 title="\LARGE a_3 = 1 + 2(3-1)=5"/><br>
+            Последовательность будет иметь вид: 1; 3; 5; 7; ...
         </p>
-        <div class="task-card" style="background-color: #abcdef">
-          <h3><big>Последовательность будет иметь вид: 1; 3; 5; 7; ...</big></h3>
-        </div>
-        <a href="javascript:history.back()">
-          <h3>Вернуться к урокам</h3>
+        <br>
+        <br>
+        <a href="/math/sequences/test">
+            {#        ниже нужно ставить цвет от объекта ...#}
+            <div class="task-card" style="background-color: #DC8754">
+                {#            и здесь тоже нужно название  из класса#}
+                <h2 class="task_label">Пройти тест</h2>
+                <img src="{{ url_for('static', filename='images/123-numbers.svg') }}" class="task_image">
+            </div>
         </a>
-      </div>
-    </body>
-  </html>
+    </div>
+
+</div>
+</body>
+</html>

@@ -63,6 +63,15 @@ def test_atomic_structure():
     return render_template('tests-atomic-structure.html')
 
 
+@app.route('/physics/elec/test', methods=['POST', 'GET'])
+def test_elec():
+    if request.method == 'GET':
+        return render_template('test_elec.html')
+    elif request.method == 'POST':
+        print(request.form["one"])
+        return "Форма отправлена"
+
+
 @app.route('/computers')
 def inf_lesson():
     return render_template('lessonI.html', title='Информатика')
@@ -76,15 +85,6 @@ def binary_lesson():
 @app.route('/computers/cpu')
 def cpu_lesson():
     return render_template('cpu.html')
-
-
-@app.route('/physics/elec/test', methods=['POST', 'GET'])
-def test_elec():
-    if request.method == 'GET':
-        return render_template('test_elec.html')
-    elif request.method == 'POST':
-        print(request.form["one"])
-        return "Форма отправлена"
 
 
 # @app.route('/bib', methods=['GET', 'POST'])
