@@ -2,13 +2,13 @@
 
 {% block content %}
 <body>
-<div class="block">
-    <a href="../"><h1 class="main_h1">Физика, 9 класс</h1></a>
-</div>
+{#<div class="block">#}
+{#    <a href="../"><h1 class="main_h1">Физика, 9 класс</h1></a>#}
+{#</div>#}
 <div class="block">
     <div style="line-height: 1.5em;">
         <a href="../">
-            <img src="static/images/arrow.svg" alt="" style="width: 1.7em; vertical-align: middle">
+            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt="" style="width: 1.7em; vertical-align: middle">
         </a>
         <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Уроки и тесты</h2>
     </div>
@@ -20,14 +20,14 @@
         <div class="task-card" style="background-color: #EB6A7D">
             {#            и здесь тоже нужно название  из класса#}
             <h2 class="task_label">Электромагнитные волны</h2>
-            <img src="static/images/wave.svg" class="task_image">
+            <img src="{{ url_for('static', filename='images/wave.svg') }}" class="task_image">
         </div>
     </a>
 
     <a href="/physics/atomic-structure/test">
         <div class="task-card" style="background-color: #A858D6">
             <h2 class="task_label">Строение атома (тест)</h2>
-            <img src="static/images/atom.svg" class="task_image">
+            <img src="{{ url_for('static', filename='images/atom.svg') }}" class="task_image">
         </div>
     </a>
 

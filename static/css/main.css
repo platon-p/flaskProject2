@@ -19,6 +19,13 @@ body {
     padding-right: 1.5em;
 }
 
+.block-l {
+    padding-left: 10em;
+    padding-right: 10em;
+    padding-top: 2em;
+    margin-bottom: 2em;
+}
+
 .main_h1 {
     font-family: 'Arial';
     color: #5b5b5b;
@@ -132,4 +139,11 @@ a {
 .inner-header, .register {
     display: inline-block;
     line-height: 100%;
+}
+
+.lesson-p {
+    font-size: 1.2em;
+    font-family: Arial;
+    display: inline-block;
+    margin-bottom: 1em;
 }

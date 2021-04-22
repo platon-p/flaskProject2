@@ -3,31 +3,26 @@
 {% block content %}
 <body>
 <div class="block">
-    <a href="../"><h1 class="main_h1">Информатика, 9 класс</h1></a>
-</div>
-<div class="block">
     <div style="line-height: 1.5em;">
         <a href="../">
-            <img src="static/images/arrow.svg" alt="" style="width: 1.7em; vertical-align: middle">
+            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt="" style="width: 1.7em; vertical-align: middle">
         </a>
         <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Уроки</h2>
     </div>
     {#    здесь нужно циклом забить уроки из бд#}
     {#    сами уроки будут являтся классом, у которого есть свойство "имя файла html"#}
     {#    ссылка на урок#}
-    <a href="">
-        {#        ниже нужно ставить цвет от объекта ...#}
+    <a href="/computers/binary">
         <div class="task-card" style="background-color: #71D780">
-            {#            и здесь тоже нужно название  из класса#}
             <h2 class="task_label">Двоичная система</h2>
-            <img src="static/images/binary.svg" class="task_image">
+            <img src="{{ url_for('static', filename='images/binary.svg') }}" class="task_image">
         </div>
     </a>
 
-    <a href="">
+    <a href="/computers/cpu">
         <div class="task-card" style="background-color: #5660FF">
             <h2 class="task_label">Процессор</h2>
-            <img src="static/images/processor.svg" class="task_image">
+            <img src="{{ url_for('static', filename='images/processor.svg') }}" class="task_image">
         </div>
     </a>
 

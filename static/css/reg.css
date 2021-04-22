@@ -4,17 +4,6 @@ body {
     min-height: 100vh;
 }
 
-.block {
-    box-shadow: 0 0 36px 5px rgba(0, 0, 0, 0.19);
-    margin: auto;
-    margin-top: 2.5vw;
-    margin-bottom: 3.5vw;
-    width: 76vw;
-    border-radius: 1em;
-    padding: 0.4em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-}
 
 .main_h1 {
     font-family: 'Arial';
@@ -94,6 +83,7 @@ form {
 a {
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
 }
+
 .registration_link {
     color: #696969;
 }
