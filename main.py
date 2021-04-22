@@ -65,6 +65,11 @@ def sequences_lesson():
     return render_template('sequences.html', title="Последовательности")
 
 
+@app.route('/math/stereometry')
+def stereometry_leson():
+    return render_template('stereometry.html')
+
+
 @app.route('/physics')
 def ph_lesson():
     return render_template('lessonPh.html', title='Физика')
@@ -73,6 +78,11 @@ def ph_lesson():
 @app.route('/physics/atomic-structure')
 def atomic_structure_leson():
     return render_template('atomic-structure.html')
+
+
+@app.route('/physics/elec')
+def elec_leson():
+    return render_template('elec.html')
 
 
 @app.route('/physics/atomic-structure/test')
