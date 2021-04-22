@@ -1,11 +1,11 @@
 from datetime import datetime
-
 from flask import Flask, request, render_template
-
 from data.db_session import create_session, global_init
 from data.users import User
 
-# from tests import TestForm
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, SelectMultipleField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -58,9 +58,24 @@ def atomic_structure_leson():
     return render_template('atomic-structure.html')
 
 
+class AtomTest(FlaskForm):
+    q1 = RadioField(label='1.К субатомным частицам не относится:', choices=['Протон', 'Нейтрон', 'Электрон', 'Фотон'])
+    q2 = '2.Порядковый номер в таблице Менделеева соответствует:'
+
+    bool1, bool2, bool3, bool4 = BooleanField('Массе атома'), BooleanField(
+        'Количеству протонов/электронов'), BooleanField('Заряду ядра'), BooleanField(
+        'Количество электронов на внешнем уровне')
+    q3 = StringField(label='3.Планетарную модель атома разработал:',
+                     render_kw={'class': 'mail_input_field', 'placeholder': 'Фамилия изобретателя',
+                                'style': 'line-height: 2em'})
+    q4 = RadioField(label='4. Тритий - это изотоп:', choices=['Кислорода', 'Водорода', 'Гелия', 'Свинца'])
+    submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
+
+
 @app.route('/physics/atomic-structure/test')
 def test_atomic_structure():
-    return render_template('tests-atomic-structure.html')
+    form = AtomTest()
+    return render_template('tests-atomic-structure.html', form=form)
 
 
 @app.route('/physics/elec/test', methods=['POST', 'GET'])
@@ -85,14 +100,6 @@ def binary_lesson():
 @app.route('/computers/cpu')
 def cpu_lesson():
     return render_template('cpu.html')
-
-
-# @app.route('/bib', methods=['GET', 'POST'])
-# def bib():
-#     form = TestForm()
-#     if form.validate_on_submit():
-#         return "Форма отправлена"
-#     return render_template('test.html', form=form)
 
 
 @app.route("/registration", methods=['POST', 'GET'])

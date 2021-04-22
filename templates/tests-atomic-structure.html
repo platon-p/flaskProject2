@@ -23,69 +23,30 @@
         <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Тест. Строение
             атома</h2>
     </div>
-
-    <form action="">
+    <form action="" method="post" novalidate>
         <div>
-            <h3>1.К субатомным частицам <i>не относится</i>:</h3>
-            <div>
-                <input type="radio" name="q1" id="q1o1">
-                <label for="q1o1" class="radio-label">Протон</label>
-                <br>
-                <input type="radio" name="q1" id="q1o2">
-                <label for="q1o2" class="radio-label">Нейтрон</label>
-                <br>
-                <input type="radio" name="q1" id="q1o3">
-                <label for="q1o3" class="radio-label">Электрон</label>
-                <br>
-                <input type="radio" name="q1" id="q1o4">
-                <label for="q1o4" class="radio-label">Фотон</label>
-            </div>
+            {{ form.csrf_token }}
         </div>
+        <h3>{{ form.q1.label }}</h3>
+        {{ form.q1() }}
 
-        <div>
-            <h3>2.Порядковый номер в таблице Менделеева соответствует:</h3>
-            <div>
-                <input type="checkbox" name="q2" id="q2o1">
-                <label for="q2o1" class="radio-label">Массе атома</label>
-                <br>
-                <input type="checkbox" name="q2" id="q2o2">
-                <label for="q2o2" class="radio-label">Количеству протонов/электронов</label>
-                <br>
-                <input type="checkbox" name="q2" id="q2o3">
-                <label for="q2o3" class="radio-label">Заряду ядра</label>
-                <br>
-                <input type="checkbox" name="q2" id="q2o4">
-                <label for="q2o4" class="radio-label">Количество электронов на внешнем уровне</label>
-            </div>
-        </div>
-
-        <div>
-            <h3>3.Планетарную модель атома разработал:</h3>
-            <div>
-                <input type="text" name="q3" id="q3o1" placeholder="Фамилия изобратетателя" class="mail_input_field"
-                style="line-height: 2em">
-            </div>
-        </div>
-
-        <div>
-            <h3>4. Тритий - это изотоп:</h3>
-            <div>
-                <input type="radio" name="q4" id="q4o1">
-                <label for="q4o1" class="radio-label">Кислорода</label>
-                <br>
-                <input type="radio" name="q4" id="q4o2">
-                <label for="q4o2" class="radio-label">Водорода</label>
-                <br>
-                <input type="radio" name="q4" id="q4o3">
-                <label for="q4o3" class="radio-label">Гелия</label>
-                <br>
-                <input type="radio" name="q4" id="q4o4">
-                <label for="q4o4" class="radio-label">Свинца</label>
-            </div>
-        </div>
+        <h3>{{ form.q2 }}</h3>
+        {{ form.bool1() }} {{ form.bool1.label }}
         <br>
-        <button class="log_in_btn">Отправить</button>
+        {{ form.bool2() }} {{ form.bool2.label }}
+        <br>
+        {{ form.bool3() }} {{ form.bool3.label }}
+        <br>
+        {{ form.bool4() }} {{ form.bool4.label }}
+        <br>
+
+        <h3>{{ form.q3.label }}</h3>
+        {{ form.q3 }}
+        <h3>{{ form.q4.label }}</h3>
+        {{ form.q4() }}
+        {{ form.submit }}
     </form>
+
     <br>
 </div>
 
