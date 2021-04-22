@@ -19,7 +19,7 @@
     <a href="/login" class="register">Войти</a>
     {# если уже вошел#}
     {% else %}
-    <a href="/profile">
+    <a href="/profile{{user_id}}">
         <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
             <img src="static/images/avatar.svg" alt="" class="avatar-img">
             <h4 class="user-label">{{user_name}} {{user_surname}}</h4>

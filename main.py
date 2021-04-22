@@ -119,7 +119,7 @@ def registration():
             return render_template('registration.html')
 
 
-@app.route("/profile")
+@app.route("/profile/<int:user_id>")
 def profile():
     print(request.user_id)
 
