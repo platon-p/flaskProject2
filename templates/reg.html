@@ -11,36 +11,32 @@
     <meta name="viewport" content="width=765">
 </head>
 <body>
-<div class="block"><h1 class="main_h1">Вход</h1></div>
-<div class="block mainb" style="padding-bottom: 1em;">
-
-    <div style="line-height: 0.8em; margin-top: 0.5em;">
-        <a href="../">
-            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
-                 style="width: 1.7em; vertical-align: middle">
-        </a>
-        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Добро
-            пожаловать!</h2>
+<h1>Авторизация</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(class="form-control", type="email") }}<br>
+        {% for error in form.email.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
     </div>
-    <br>
-
-    <form action="" method="post">
-        <div style="width: 50%;">
-            <div class="mail_input">
-                <img src="{{ url_for('static', filename='images/user.svg') }}" alt="" class="user-input user-img">
-                <label>
-                    <input type="email" class="user-input mail_input_field" placeholder="Почта" name="mail_input">
-                </label>
-            </div>
-            <div class="password_input">
-                <img src="{{ url_for('static', filename='images/key.svg') }}" alt="" class="passw_input pw_img">
-                <input type="password" class="passw_input password-input-field" placeholder="Пароль"
-                       name="password_input">
-            </div>
-            <button class="log_in_btn" style="width: 15em">Войти</button>
-        </div>
-    </form>
-    <a href="/registration" class="registration_link">У меня нет аккаунта</a>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(class="form-control", type="password") }}<br>
+        {% for error in form.password.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    <div>{{ message }}</div>
+</form>
+<a href="/registration" class="registration_link">У меня нет аккаунта</a>
 </div>
 </body>
 </html>

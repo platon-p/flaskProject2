@@ -21,3 +21,6 @@ class User(SqlAlchemyBase, UserMixin):
     results = orm.relation("Lessons",
                            secondary="results",
                            backref="users")
+
+    def check_password(self, password):
+        return password == self.password

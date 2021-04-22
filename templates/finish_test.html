@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Результаты теста:</p>
+{% set count = namespace(a=0) %}
+{% for ans in answers_true %}
+<p>{{ loop.index }}. Вы ответили - {{ answers[loop.index0] }}, правильный ответ - {{ ans }}</p>
+{% if ans == answers[loop.index0] %}
+    <p>Верно)</p>
+    {% set count.a = count.a + 1 %}
+{% else %}
+    <p>Непрваильный ответ!</p>
+{% endif %}
+{% endfor %}
+<h2>Всего правильных ответов: {{ count.a }}</h2>
+{% set percent = count.a / len * 100 %}
+<h2>Тест выполнен прваильно на {{ percent }}%</h2>
+{% endblock %}

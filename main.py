@@ -1,13 +1,21 @@
 from datetime import datetime
-from flask import Flask, request, render_template
-from data.db_session import create_session, global_init
-from data.users import User
 
+from flask import Flask, request, render_template, redirect
+from flask_login import LoginManager, login_user
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, SelectMultipleField
+from wtforms import PasswordField, SubmitField, BooleanField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 
+from data.db_session import create_session, global_init
+from data.tests import Lessons
+from data.users import User
+
+# from tests import TestForm
+
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
@@ -18,24 +26,33 @@ def hello_world():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html')
+    return render_template('404.html', title="Упс... Ошибочка(")
+
+
+class LoginForm(FlaskForm):
+    email = EmailField('Почта', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    remember_me = BooleanField('Запомнить меня')
+    submit = SubmitField('Войти')
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = create_session()
+    return db_sess.query(User).get(user_id)
 
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if request.method == 'GET':
-        return render_template('reg.html')
-    elif request.method == 'POST':
-        global_init("db/project.db")
+    form = LoginForm()
+    if form.validate_on_submit():
         db_sess = create_session()
-        req = db_sess.query(User).filter(User.email == "".join(request.form["mail_input"]))
-        if len(list(req)) == 1:
-            user = list(req)[0]
-            password = user.password
-            if password == "".join(request.form["password_input"]):
-                return render_template('ind.html', user_id=user.id,
-                                       user_surname=user.surname,
-                                       user_name=user.name)
+        db_sess = create_session()
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect("/")
+    return render_template('reg.html', title='Авторизация', form=form)
 
 
 @app.route('/math')
@@ -45,7 +62,7 @@ def math_lesson():
 
 @app.route('/math/sequences')
 def sequences_lesson():
-    return render_template('sequences.html')
+    return render_template('sequences.html', title="Последовательности")
 
 
 @app.route('/physics')
@@ -58,24 +75,9 @@ def atomic_structure_leson():
     return render_template('atomic-structure.html')
 
 
-class AtomTest(FlaskForm):
-    q1 = RadioField(label='1.К субатомным частицам не относится:', choices=['Протон', 'Нейтрон', 'Электрон', 'Фотон'])
-    q2 = '2.Порядковый номер в таблице Менделеева соответствует:'
-
-    bool1, bool2, bool3, bool4 = BooleanField('Массе атома'), BooleanField(
-        'Количеству протонов/электронов'), BooleanField('Заряду ядра'), BooleanField(
-        'Количество электронов на внешнем уровне')
-    q3 = StringField(label='3.Планетарную модель атома разработал:',
-                     render_kw={'class': 'mail_input_field', 'placeholder': 'Фамилия изобретателя',
-                                'style': 'line-height: 2em'})
-    q4 = RadioField(label='4. Тритий - это изотоп:', choices=['Кислорода', 'Водорода', 'Гелия', 'Свинца'])
-    submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
-
-
 @app.route('/physics/atomic-structure/test')
 def test_atomic_structure():
-    form = AtomTest()
-    return render_template('tests-atomic-structure.html', form=form)
+    return render_template('tests-atomic-structure.html')
 
 
 @app.route('/physics/elec/test', methods=['POST', 'GET'])
@@ -83,8 +85,13 @@ def test_elec():
     if request.method == 'GET':
         return render_template('test_elec.html')
     elif request.method == 'POST':
-        print(request.form["one"])
-        return "Форма отправлена"
+        answers = list(request.form[i] for i in request.form.keys())[1:-1]
+        db_sess = create_session()
+        req = db_sess.query(Lessons).filter(Lessons.path_to_html == "test_elec.html").first().answers
+        f = open(req, mode="r", encoding="utf-8")
+        answers_true = [i.strip() for i in f.readlines()]
+        f.close()
+        return render_template("finish_test.html", answers_true=answers_true, answers=answers, len=len(answers_true))
 
 
 @app.route('/computers')
@@ -102,13 +109,20 @@ def cpu_lesson():
     return render_template('cpu.html')
 
 
+# @app.route('/bib', methods=['GET', 'POST'])
+# def bib():
+#     form = TestForm()
+#     if form.validate_on_submit():
+#         return "Форма отправлена"
+#     return render_template('test.html', form=form)
+
+
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
     if request.method == 'GET':
         return render_template('registration.html', title='Моя школа')
     elif request.method == 'POST':
         try:
-            global_init("db/project.db")
             db_sess = create_session()
             req = db_sess.query(User).filter(User.email == request.form["email"])
             if 5 <= int(request.form["age"]) <= 100 \
@@ -133,9 +147,11 @@ def registration():
 
 
 @app.route("/profile/<int:user_id>")
-def profile():
-    print(request.user_id)
+def profile(user_id):
+    user = load_user(user_id)
+    return render_template('profile.html', user=user)
 
 
 if __name__ == '__main__':
+    global_init("db/project.db")
     app.run(debug=True)
