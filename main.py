@@ -203,10 +203,19 @@ def cpu_lesson():
     return '404 error'
 
 
+class RegisterForm(FlaskForm):
+    surname = StringField(render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Фамилия'})
+    name = StringField(render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Имя'})
+    mail = StringField(render_kw={'class': 'user-input mail_input_field necessarily', 'placeholder': 'Почта'})
+    password = PasswordField(render_kw={'class': 'user-input mail_input_field necessarily', 'placeholder': 'Пароль'})
+    submit = SubmitField('Регистрация', render_kw={'class': 'log_in_btn', 'style': 'width: 15em'})
+
+
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
+    form = RegisterForm()
     if request.method == 'GET':
-        return render_template('registration.html', title='Моя школа')
+        return render_template('registration.html', title='Регистрация', form=form)
     elif request.method == 'POST':
         try:
             global_init("db/project.db")

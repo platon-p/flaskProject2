@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Вход</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="static/css/reg.css">
     <link rel="stylesheet" href="static/css/main.css">
     <meta name="viewport" content="width=765">
@@ -24,32 +24,18 @@
     </div>
     <br>
 
-    <div >
+    <div>
         <form action="" method="post">
             <div style="width: 50%;">
+                <div>
+                    {{ form.csrf_token }}
+                </div>
+                {% for i in form if i.name != 'csrf_token' and i.name != 'submit' %}
+                    {{ i() }}
+                    <br>
+                {% endfor %}
                 <br>
-                <label> &ensp;
-                    <input type="text" class="user-input mail_input_field" placeholder="Фамилия" name="surname">
-                </label>
-                <br>
-                <br>
-                <label> &ensp;
-                    <input type="text" class="user-input mail_input_field" placeholder="Имя" name="name">
-                </label>
-                <br>
-                <br>
-                <label><font color="red">*</font>
-                    <input type="email" class="user-input mail_input_field" placeholder="Почта" name="mail">
-                </label>
-                <br>
-                <br>
-                <label><font color="red">*</font>
-                    <input type="password" class="user-input mail_input_field" placeholder="Пароль" name="password">
-                </label>
-                <br>
-                <br>
-                <br>
-                <button class="log_in_btn" style="width: 15em">Регистрация</button>
+                {{ form.submit }}
             </div>
         </form>
     </div>

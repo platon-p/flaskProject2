@@ -87,3 +87,7 @@ a {
 .registration_link {
     color: #696969;
 }
+
+.necessarily::placeholder {
+    color: red;
+}
