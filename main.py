@@ -129,7 +129,7 @@ def test_atomic_structure():
 
 
 @app.route('/physics/elec')
-def elec_leson():
+def elec_lesson():
     for i in CARDS['physics']:
         if i.link == '/physics/elec':
             return render_template('elec.html', card=i)
