@@ -71,10 +71,10 @@
                 allowfullscreen></iframe>
         <br>
         <br>
-        <a href="/computers/binary/test">
-            <div class="task-card" style="background-color: #71D780">
+        <a href="{{ card.link }}/test">
+            <div class="task-card" style="background-color: {{ card.color }}">
                 <h2 class="task_label">Пройти тест</h2>
-                <img src="{{ url_for('static', filename='images/binary.svg') }}" class="task_image">
+                <img src="{{ url_for('static', filename='images/' + card.source) }}" class="task_image">
             </div>
         </a>
     </div>

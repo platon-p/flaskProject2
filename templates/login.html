@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Вход</title>
+    <link rel="stylesheet" href="static/css/reg.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <meta name="viewport" content="width=765">
+</head>
+<body>
+<div class="block"><h1 class="main_h1">Вход</h1></div>
+<div class="block mainb" style="padding-bottom: 1em;">
+
+    <div style="line-height: 0.8em; margin-top: 0.5em;">
+        <a href="../">
+            <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
+                 style="width: 1.7em; vertical-align: middle">
+        </a>
+        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Добро
+            пожаловать!</h2>
+    </div>
+    <br>
+    <div>{{ form.csrf_token }}</div>
+
+    <form action="" method="post">
+        <div style="width: 50%;">
+            <div class="mail_input">
+                <img src="{{ url_for('static', filename='images/user.svg') }}" alt="" class="user-input user-img">
+                {{ form.mail() }}
+            </div>
+            <div class="password_input">
+                <img src="{{ url_for('static', filename='images/key.svg') }}" alt="" class="passw_input pw_img">
+                {{ form.password }}
+            </div>
+            {{ form.submit }}
+        </div>
+    </form>
+    <a href="/registration" class="registration_link">У меня нет аккаунта</a>
+</div>
+</body>
+</html>

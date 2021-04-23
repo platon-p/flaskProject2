@@ -111,12 +111,10 @@
         </p>
         <br>
         <br>
-        <a href="/math/sequences/test">
-            {#        ниже нужно ставить цвет от объекта ...#}
-            <div class="task-card" style="background-color: #DC8754">
-                {#            и здесь тоже нужно название  из класса#}
+        <a href="{{ card.link }}/test">
+            <div class="task-card" style="background-color: {{ card.color }}">
                 <h2 class="task_label">Пройти тест</h2>
-                <img src="{{ url_for('static', filename='images/123-numbers.svg') }}" class="task_image">
+                <img src="{{ url_for('static', filename='images/' + card.source) }}" class="task_image">
             </div>
         </a>
     </div>

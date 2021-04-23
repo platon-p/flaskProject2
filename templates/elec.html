@@ -66,12 +66,10 @@
         </p>
         <p class="lesson-p"><i>Гамма-излучением</i> называют электромагнитное излучение, испускаемое возбужденными ядрами и возникающее при взаимодействии элементарных частиц.
         </p>
-        <a href="/physics/elec/test">
-            {#        ниже нужно ставить цвет от объекта ...#}
-            <div class="task-card" style="background-color: #A858D6">
-                {#            и здесь тоже нужно название  из класса#}
+        <a href="{{ card.link }}/test">
+            <div class="task-card" style="background-color: {{ card.color }}">
                 <h2 class="task_label">Пройти тест</h2>
-                <img src="{{ url_for('static', filename='images/atom.svg') }}" class="task_image">
+                <img src="{{ url_for('static', filename='images/' + card.source) }}" class="task_image">
             </div>
         </a>
     </div>

@@ -114,12 +114,12 @@
 
         <br>
         <br>
-        <a href="/physics/atomic-structure/test">
-        <div class="task-card" style="background-color: #A858D6">
-            <h2 class="task_label">Пройти тест</h2>
-            <img src="{{ url_for('static', filename='images/atom.svg') }}" class="task_image">
-        </div>
-    </a>
+        <a href="{{ card.link }}/test">
+            <div class="task-card" style="background-color: {{ card.color }}">
+                <h2 class="task_label">Пройти тест</h2>
+                <img src="{{ url_for('static', filename='images/' + card.source) }}" class="task_image">
+            </div>
+        </a>
     </div>
 </div>
 </body>

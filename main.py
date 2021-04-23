@@ -4,7 +4,7 @@ from data.db_session import create_session, global_init
 from data.users import User
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, SelectMultipleField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -29,10 +29,19 @@ def page_not_found(e):
     return render_template('404.html')
 
 
+class LoginForm(FlaskForm):
+    mail = StringField(validators=[DataRequired()],
+                       render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Почта'})
+    password = PasswordField(validators=[DataRequired()],
+                             render_kw={'class': 'passw_input password-input-field', 'placeholder': 'Пароль'})
+    submit = SubmitField('Войти', render_kw={'class': 'log_in_btn', 'style': 'width: 15em'})
+
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    form = LoginForm()
     if request.method == 'GET':
-        return render_template('reg.html')
+        return render_template('login.html', form=form)
     elif request.method == 'POST':
         global_init("db/project.db")
         db_sess = create_session()
