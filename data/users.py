@@ -23,4 +23,4 @@ class User(SqlAlchemyBase, UserMixin):
                            backref="users")
 
     def check_password(self, password):
-        return password == self.password
+        return hash(password) == self.password

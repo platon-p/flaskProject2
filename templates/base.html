@@ -11,16 +11,20 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<div class="header block">
-    {% if current_user.is_authenticated %}
-    <a class="navbar-brand" href="/profile/{{ current_user.id }}">{{ current_user.surname }} {{ current_user.name }}</a>
-    {% else %}
-    <p>
-        <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
-        <a class="btn btn-success" href="/login">Войти</a>
-    </p>
-    {% endif %}
-</div>
+<form method="post">
+    <div class="header block">
+        {% if current_user.is_authenticated %}
+        <a class="navbar-brand" href="/profile/{{ current_user.id }}">{{ current_user.surname }} {{ current_user.name
+            }}</a>
+        <button type="submit" class="btn btn-primary">Выйти</button>
+        {% else %}
+        <p>
+            <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
+            <a class="btn btn-success" href="/login">Войти</a>
+        </p>
+        {% endif %}
+    </div>
+</form>
 <main role="main" class="container">
     {% block content %}{% endblock %}
 </main>

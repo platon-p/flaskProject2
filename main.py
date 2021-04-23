@@ -132,7 +132,7 @@ def registration():
                 user.surname = request.form["surname"]
                 user.name = request.form["name"]
                 user.email = request.form["email"]
-                user.password = request.form["password"]
+                user.password = hash(request.form["password"])
                 user.age = request.form["age"]
                 user.school_class = request.form["school_class"]
                 user.modified_date = datetime.now()
