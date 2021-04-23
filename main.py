@@ -93,7 +93,7 @@ def stereometry_lesson():
 
 @app.route('/math/stereometry/test', methods=['GET', 'POST'])
 def test_stereometry():
-    form = SequencesTest()
+    form = TestStereometry()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
     return render_template('test_stereometry.html', form=form)
