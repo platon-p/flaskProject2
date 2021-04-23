@@ -91,6 +91,14 @@ def stereometry_lesson():
     return '404 error'
 
 
+@app.route('/math/stereometry/test', methods=['GET', 'POST'])
+def test_stereometry():
+    form = SequencesTest()
+    if form.validate_on_submit():
+        return 'Данные успешно сохранены'
+    return render_template('test_stereometry.html', form=form)
+
+
 @app.route('/physics/atomic-structure')
 def atomic_structure_lesson():
     for i in CARDS['physics']:
@@ -147,6 +155,14 @@ def cpu_lesson():
     return '404 error'
 
 
+@app.route('/computers/cpu/test', methods=['POST', 'GET'])
+def test_cpu():
+    form = TestCPU()
+    if form.validate_on_submit():
+        return 'Данные успешно сохранены'
+    return render_template('test_cpu.html', form=form)
+
+
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
     form = RegisterForm()
@@ -179,7 +195,7 @@ def registration():
 
 
 @app.route("/profile/<int:user_id>")
-def profile():
+def profile(user_id):
     print(request.user_id)
 
 
