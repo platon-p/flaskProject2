@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=765">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="static/css/main.css">
-    <link rel="stylesheet" href="static/css/reg.css">
+    {#    <link rel="stylesheet" href="static/css/reg.css">#}
     <link rel="stylesheet" href="static/css/cards.css">
     <link rel="icon" href="static/images/shapes.svg" type="image/svg+xml">
-    <title>{{ title }}</title>
+    <title>Главная</title>
 </head>
 <body>
-<form method="post">
-    <div class="header block">
-        {% if current_user.is_authenticated %}
-        <a class="navbar-brand" href="/profile/{{ current_user.id }}">{{ current_user.surname }} {{ current_user.name
-            }}</a>
-        <button type="submit" class="btn btn-primary">Выйти</button>
-        {% else %}
-        <p>
-            <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
-            <a class="btn btn-success" href="/login">Войти</a>
-        </p>
-        {% endif %}
-    </div>
-</form>
+<div class="header block">
+    {% if not user_id %}
+        <div class="inner-header">
+            <h1 class="main_h1">{{ title }}</h1>
+            <div style="display: inline-block; position: relative; float: right; line-height: 100%;">
+                <a href="/login" class="register">Войти</a>
+            </div>
+        </div>
+        {# если уже вошел#}
+    {% else %}
+        <a href="/profile">
+            <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+                <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
+                <h4 class="user-label">{{ user_name }} {{ user_surname }}</h4>
+            </div>
+        </a>
+    {% endif %}
+</div>
 <main role="main" class="container">
     {% block content %}{% endblock %}
 </main>

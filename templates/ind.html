@@ -4,39 +4,24 @@
     <div class="lessons_box block">
         <h2 class="label_lessons" align="center">Предметы</h2>
         <div class="lessons_cards">
-            <div class="card">
-                <a href="/math">
-                    <div>
-                        <img src="{{ url_for('static', filename='images/shapes.svg') }}" class="ico" alt="">
-                        <h3 class="">Математика</h3>
-                        <h3 class="lesson_label_2">N уроков</h3>
-                        {#N подгружается из БД#}
-                    </div>
-                </a>
-            </div>
-            <div class="card">
-                <a href="/physics">
-                    <div><img src="{{ url_for('static', filename='images/magnet.svg') }}" class="ico" alt="">
-                        <h3 class="">Физика</h3>
-                        <h3 class="lesson_label_2">N уроков</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="card">
-                <a href="/computers">
-                    <div>
-                        <img src="{{ url_for('static', filename='images/computer.svg') }}" class="ico" alt="">
-                        <h3 class="">Информатика</h3>
-                        <h3 class="lesson_label_2">N уроков</h3>
-                    </div>
-                </a>
-            </div>
+            {% for i in cards %}
+                <div class="card">
+                    <a href="/{{ i.link }}">
+                        <div>
+                            <img src="{{ url_for('static', filename='images/' + i.img) }}" class="ico" alt="">
+                            <h3 class="">{{ i.name }}</h3>
+                            <h3 class="lesson_label_2">{{ i.lenght }} уроков</h3>
+                        </div>
+                    </a>
+                </div>
+
+            {% endfor %}
         </div>
     </div>
     <div class="block">
         <h3 class="about">О нас</h3>
         <p class="about_p">Изучайте программу 9 класса по математике, физике и информатике, проверяйте свои знания.
-            Вы можете отслеживать свою статистику по прохождению тестов, комментировать задания и многое другое.
+            Вы можете отслеживать свою статистику по прохождению тестов.
     </div>
 
 {% endblock %}
