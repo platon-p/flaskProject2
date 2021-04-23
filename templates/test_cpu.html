@@ -13,15 +13,14 @@
 <div class="block">
     <a href="/computers"><h1 class="main_h1">Информатика, 9 класс </h1></a>
 </div>
-{% if current_user.is_authenticated %}
+
 <div class="block">
     <div style="line-height: 1.5em;">
         <a href="/computers">
             <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
                  style="width: 1.7em; vertical-align: middle">
         </a>
-        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Тест. Двоичная
-            система</h2>
+        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Тест. Процессор</h2>
     </div>
 
     <form action="" method="post" novalidate>
@@ -29,15 +28,13 @@
             {{ form.csrf_token }}
         </div>
         {% for i in form if i.name != 'csrf_token' and i.name != 'submit' %}
-        <h3>{{ i.label }}</h3>
-        {{ i() }}
+            <h3>{{ i.label }}</h3>
+            {{ i() }}
         {% endfor %}
         {{ form.submit }}
     </form>
     <br>
 </div>
-{% else %}
-<h2>Войдите в аккаунт, чтобы пройти тест!</h2>
-{% endif %}
+
 </body>
 </html>

@@ -1,12 +1,18 @@
+import hashlib
 from datetime import datetime
-from flask import Flask, request, render_template
+
+from flask import Flask, request, render_template, redirect
+from flask_login import LoginManager, login_user
+
+from cards import *
 from data.db_session import create_session, global_init
 from data.users import User
-
+from data.results import association_table
 from forms import *
-from cards import *
 
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
@@ -25,22 +31,22 @@ def page_not_found(e):
     return render_template('404.html')
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = create_session()
+    return db_sess.query(User).get(user_id)
+
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
-    if request.method == 'GET':
-        return render_template('login.html', form=form)
-    elif request.method == 'POST':
-        global_init("db/project.db")
+    if form.validate_on_submit():
         db_sess = create_session()
-        req = db_sess.query(User).filter(User.email == "".join(request.form["mail_input"]))
-        if len(list(req)) == 1:
-            user = list(req)[0]
-            password = user.password
-            if password == "".join(request.form["password_input"]):
-                return render_template('ind.html', user_id=user.id,
-                                       user_surname=user.surname,
-                                       user_name=user.name)
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=True)
+            return redirect("/")
+    return render_template('login.html', title='Авторизация', form=form)
 
 
 @app.route('/math')
@@ -75,7 +81,7 @@ def sequences_lesson():
 
 @app.route('/math/sequences/test', methods=['GET', 'POST'])
 def test_sequences():
-    form = SequencesTest()
+    form = TestStereometry()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
     return render_template('test_sequences.html', form=form)
@@ -89,6 +95,14 @@ def stereometry_lesson():
             # выбираем ту карточку, которая соответствует теме
             return render_template('stereometry.html', card=i)
     return '404 error'
+
+
+@app.route('/math/stereometry/test', methods=['GET', 'POST'])
+def test_stereometry():
+    form = SequencesTest()
+    if form.validate_on_submit():
+        return 'Данные успешно сохранены'
+    return render_template('test_stereometry.html', form=form)
 
 
 @app.route('/physics/atomic-structure')
@@ -147,35 +161,34 @@ def cpu_lesson():
     return '404 error'
 
 
+@app.route('/computers/cpu/test', methods=['POST', 'GET'])
+def test_cpu():
+    form = TestCPU()
+    if form.validate_on_submit():
+        # вот тут надо сделать
+        print(request.form["current_user"])
+        res = check_test(form, request.form["current_user"], "Процессор")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('test_cpu.html', form=form)
+
+
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
     form = RegisterForm()
-    if request.method == 'GET':
-        return render_template('registration.html', title='Регистрация', form=form)
-    elif request.method == 'POST':
-        try:
-            global_init("db/project.db")
-            db_sess = create_session()
-            req = db_sess.query(User).filter(User.email == request.form["email"])
-            if 5 <= int(request.form["age"]) <= 100 \
-                    and 1 <= int(request.form["school_class"]) <= 11 \
-                    and len(request.form["password"]) >= 8 and len(list(req)) < 1:
-                user = User()
-                user.surname = request.form["surname"]
-                user.name = request.form["name"]
-                user.email = request.form["email"]
-                user.password = request.form["password"]
-                user.age = request.form["age"]
-                user.school_class = request.form["school_class"]
-                user.modified_date = datetime.now()
-                user.admin = False
-                db_sess.add(user)
-                db_sess.commit()
-                return render_template("reg_final.html")
-            else:
-                return render_template('registration.html')
-        except Exception:
-            return render_template('registration.html')
+    if form.validate_on_submit():
+        db_sess = create_session()
+        req = db_sess.query(User).filter(User.email == form.mail.data)
+        if len(form.password.data) >= 8 and len(list(req)) < 1:
+            user = User()
+            user.surname = form.surname.data
+            user.name = form.name.data
+            user.email = form.mail.data
+            user.password = hashlib.md5(bytes(form.password.data.encode("utf-8"))).hexdigest()
+            user.modified_date = datetime.now()
+            db_sess.add(user)
+            db_sess.commit()
+            return redirect("/login")
+    return render_template('registration.html', title='Регистрация', form=form)
 
 
 @app.route("/profile/<int:user_id>")
@@ -183,5 +196,24 @@ def profile():
     print(request.user_id)
 
 
+def check_test(form, user_id, name):
+    count = 0
+    for i, j in enumerate(form):
+        if len(form.answers) > i:
+            if j == form.answers[i]:
+                count += 1
+        else:
+            break
+    db_sess = create_session()
+    result = association_table()
+    result.user_id = user_id
+    result.lessons_name = name
+    result.percent = f"{count}/{len(form.answers)}"
+    db_sess.add(result)
+    db_sess.commit()
+    return f"{count}/{len(form.answers)}"
+
+
 if __name__ == '__main__':
+    global_init("db/project.db")
     app.run(debug=True)

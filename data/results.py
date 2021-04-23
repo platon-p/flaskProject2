@@ -1,13 +1,12 @@
 import sqlalchemy
-from .db_session import SqlAlchemyBase
 
+from .db_session import SqlAlchemyBase
 
 association_table = sqlalchemy.Table(
     'results',
     SqlAlchemyBase.metadata,
     sqlalchemy.Column('user_id', sqlalchemy.Integer,
                       sqlalchemy.ForeignKey('users.id')),
-    sqlalchemy.Column('lessons_id', sqlalchemy.Integer,
-                      sqlalchemy.ForeignKey('lessons.id')),
-    sqlalchemy.Column('result', sqlalchemy.Integer)
+    sqlalchemy.Column('lessons_name', sqlalchemy.String),
+    sqlalchemy.Column('percent', sqlalchemy.String)
 )

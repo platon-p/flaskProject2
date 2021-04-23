@@ -1,10 +1,11 @@
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
 from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired
 
 
 class LoginForm(FlaskForm):
-    mail = StringField(validators=[DataRequired()],
+    email = EmailField(validators=[DataRequired()],
                        render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Почта'})
     password = PasswordField(validators=[DataRequired()],
                              render_kw={'class': 'passw_input password-input-field', 'placeholder': 'Пароль'})
@@ -89,3 +90,32 @@ class SequencesTest(FlaskForm):
                     choices=('Словесным', 'Рекуррентным', 'Формулой'), render_kw={'class': 'radio-label'})
     submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
     answers = ('Словесным', 'Рекуррентным', 'Формулой', 'Формулой')
+
+
+class TestCPU(FlaskForm):
+    q1 = RadioField('Процессор могут обозначать как...',
+                    choices=('GPU', 'CPU', 'AMD', 'ARM'), render_kw={'class': 'radio-label'})
+    q2 = RadioField('Промежуток времени между двумя последовательными электрическими импульсами называется...',
+                    choices=('Ядром', 'Видеокартой', 'Частотой', 'Тактом'), render_kw={'class': 'radio-label'})
+    q3 = RadioField(
+        'Максимальная длина двоичного кода, который может обрабатываться или передаваться одновременно, называется ...',
+        choices=('Байтом', 'Разрядностью процессора', 'МГц', 'Архитектурой'), render_kw={'class': 'radio-label'})
+    q4 = RadioField('1000 МГц соответствует...',
+                    choices=('1КГц', '10ГГц', '1ГГц', '300КГц'), render_kw={'class': 'radio-label'})
+    submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
+    answers = ('CPU', 'Тактом', 'Разрядностью процессора', '1ГГц')
+
+
+class TestStereometry(FlaskForm):
+    q1 = RadioField('Раздел геометрии, в котором изучают свойства фигур называется...',
+                    choices=('Тригонометрия', 'Планиметрия', 'Стереометрия'), render_kw={'class': 'radio-label'})
+    q2 = RadioField('Многоугольники, из которых состоит многогранник, называются...',
+                    choices=('Прямоугольниками', 'Квадратами', 'Треугольниками', 'Гранями'),
+                    render_kw={'class': 'radio-label'})
+    q3 = RadioField(
+        'Верно ли, что Диагональ многогранника — это отрезок, который соединяет две вершины, принадлежащие одной грани',
+        choices=('Верно', 'Неверно'), render_kw={'class': 'radio-label'})
+    q4 = RadioField('Стороны граней называются..',
+                    choices=('Вершинами', 'Углами', 'Ребрами'), render_kw={'class': 'radio-label'})
+    submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
+    answers = ('Стереометрия', 'Гранями', 'Неверно', 'Ребрами')

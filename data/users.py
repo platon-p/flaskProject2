@@ -1,6 +1,7 @@
+import hashlib
+
 import sqlalchemy
 from flask_login import UserMixin
-from sqlalchemy import orm
 
 from .db_session import SqlAlchemyBase
 
@@ -14,13 +15,7 @@ class User(SqlAlchemyBase, UserMixin):
     password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     surname = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    age = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    school_class = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, nullable=True)
-    admin = sqlalchemy.Column(sqlalchemy.Boolean, nullable=True)
-    results = orm.relation("Lessons",
-                           secondary="results",
-                           backref="users")
 
     def check_password(self, password):
-        return hash(password) == self.password
+        return hashlib.md5(password.encode("utf-8")).hexdigest() == self.password

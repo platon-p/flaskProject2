@@ -27,15 +27,32 @@
 
     <form action="" method="post">
         <div style="width: 50%;">
+            {{ form.hidden_tag() }}
             <div class="mail_input">
                 <img src="{{ url_for('static', filename='images/user.svg') }}" alt="" class="user-input user-img">
-                {{ form.mail() }}
+                <p>
+                    {{ form.email.label }}<br>
+                    {{ form.email(class="user-input mail_input_field", type="email", placeholder="Почта") }}<br>
+                    {% for error in form.email.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endfor %}
+                </p>
             </div>
             <div class="password_input">
                 <img src="{{ url_for('static', filename='images/key.svg') }}" alt="" class="passw_input pw_img">
-                {{ form.password }}
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(class="passw_input password-input-field", type="password", placeholder="Пароль") }}<br>
+                    {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endfor %}
+                </p>
             </div>
-            {{ form.submit }}
+            <p>{{ form.submit(type="submit", class="log_in_btn", style="width: 15em") }}</p>
         </div>
     </form>
     <a href="/registration" class="registration_link">У меня нет аккаунта</a>

@@ -11,21 +11,21 @@
 </head>
 <body>
 <div class="header block">
-    {% if not user_id %}
-        <div class="inner-header">
-            <h1 class="main_h1">{{ title }}</h1>
-            <div style="display: inline-block; position: relative; float: right; line-height: 100%;">
-                <a href="/login" class="register">Войти</a>
-            </div>
+    {% if current_user.is_authenticated %}
+    <a href="/profile">
+        <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+            <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
+            <h4 class="user-label">{{ current_user.name }} {{ current_user.surname }}</h4>
         </div>
-        {# если уже вошел#}
+    </a>
+    {# если уже вошел#}
     {% else %}
-        <a href="/profile">
-            <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
-                <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
-                <h4 class="user-label">{{ user_name }} {{ user_surname }}</h4>
-            </div>
-        </a>
+    <div class="inner-header">
+        <h1 class="main_h1">{{ title }}</h1>
+        <div style="display: inline-block; position: relative; float: right; line-height: 100%;">
+            <a href="/login" class="register">Войти</a>
+        </div>
+    </div>
     {% endif %}
 </div>
 <main role="main" class="container">
