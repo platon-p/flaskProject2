@@ -31,6 +31,12 @@ def page_not_found(e):
     return render_template('404.html')
 
 
+@app.errorhandler(500)
+def error500():
+    # обработка страницы ошибки 500
+    return render_template('something_wrong.html', text='Внутренняя ошибка сервера')
+
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = create_session()
@@ -205,6 +211,12 @@ def registration():
             db_sess.commit()
             return redirect("/login")
     return render_template('registration.html', title='Регистрация', form=form)
+
+
+@app.route('/test-had-been-passed')
+def test_passed():
+    # если тест был пройден
+    return render_template('something_wrong.html', text='Тест уже был пройден')
 
 
 @app.route("/profile")
