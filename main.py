@@ -2,7 +2,7 @@ import hashlib
 from datetime import datetime
 
 from flask import Flask, request, render_template, redirect
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 
 from cards import *
 from data.db_session import create_session, global_init
@@ -35,6 +35,14 @@ def page_not_found(e):
 def load_user(user_id):
     db_sess = create_session()
     return db_sess.query(User).get(user_id)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    # обработка выхода из аккаунта
+    logout_user()
+    return redirect("/")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -75,6 +83,7 @@ def sequences_lesson():
     for i in CARDS['math']:
         if i.link == '/math/sequences':
             # выбираем ту карточку, которая соответствует теме
+            print(current_user.id)
             return render_template('sequences.html', card=i)
     return '404 error'
 
@@ -93,6 +102,7 @@ def stereometry_lesson():
     for i in CARDS['math']:
         if i.link == '/math/stereometry':
             # выбираем ту карточку, которая соответствует теме
+            print(current_user.id)
             return render_template('stereometry.html', card=i)
     return '404 error'
 
@@ -109,6 +119,7 @@ def test_stereometry():
 def atomic_structure_lesson():
     for i in CARDS['physics']:
         if i.link == '/physics/atomic-structure':
+            print(current_user.id)
             return render_template('atomic-structure.html', card=i)
     return '404 error'
 
@@ -125,6 +136,7 @@ def test_atomic_structure():
 def elec_lesson():
     for i in CARDS['physics']:
         if i.link == '/physics/elec':
+            print(current_user.id)
             return render_template('elec.html', card=i)
     return '404 error'
 
@@ -141,6 +153,7 @@ def test_elec():
 def binary_lesson():
     for i in CARDS['computers']:
         if i.link == '/computers/binary':
+            print(current_user.id)
             return render_template('binary.html', card=i)
     return '404 error'
 
@@ -157,6 +170,7 @@ def test_binary():
 def cpu_lesson():
     for i in CARDS['computers']:
         if i.link == '/computers/cpu':
+            print(current_user.id)
             return render_template('cpu.html', card=i)
     return '404 error'
 
