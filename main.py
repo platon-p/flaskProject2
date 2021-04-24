@@ -101,7 +101,7 @@ def sequences_lesson():
 @app.route('/math/sequences/test', methods=['GET', 'POST'])
 def test_sequences():
     try:
-        form = TestStereometry()
+        form = TestSequences()
         if current_user.id:
             if form.validate_on_submit():
                 res = check_test(form, current_user.id, "Последовательности")
@@ -124,11 +124,11 @@ def stereometry_lesson():
 @app.route('/math/stereometry/test', methods=['GET', 'POST'])
 def test_stereometry():
     try:
-        form = TestSequences()
+        form = TestStereometry()
         if current_user.id:
             if form.validate_on_submit():
                 res = check_test(form, current_user.id, "Стереометрия")
-            return render_template('something_wrong.html', text='Данные успешно сохранены')
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
         return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
     except Exception:
         return redirect("/enter_please")
