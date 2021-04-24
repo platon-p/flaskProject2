@@ -1,13 +1,13 @@
 import hashlib
 from datetime import datetime
 
-from flask import Flask, request, render_template, redirect
+from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 
 from cards import *
 from data.db_session import create_session, global_init
-from data.users import User
 from data.results import Result
+from data.users import User
 from forms import *
 
 app = Flask(__name__)
@@ -29,6 +29,12 @@ def hello_world():
 def page_not_found(e):
     # обработка страницы ошибки 404
     return render_template('404.html')
+
+
+@app.errorhandler(500)
+def error500():
+    # обработка страницы ошибки 500
+    return render_template('something_wrong.html', text='Внутренняя ошибка сервера')
 
 
 @login_manager.user_loader
@@ -97,7 +103,7 @@ def test_sequences():
     form = TestStereometry()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Последовательности")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
 
 
@@ -116,7 +122,7 @@ def test_stereometry():
     form = TestSequences()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Стереометрия")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
 
 
@@ -133,7 +139,7 @@ def test_atomic_structure():
     form = TestAtom()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Строение атома")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
 
 
@@ -150,7 +156,7 @@ def test_elec():
     form = TestElec()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Электромагнитные волны")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
 
 
@@ -167,7 +173,7 @@ def test_binary():
     form = TestBinary()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Двоичная система")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Информатика', link='computers', link2='binary')
 
 
@@ -184,7 +190,7 @@ def test_cpu():
     form = TestCPU()
     if form.validate_on_submit():
         res = check_test(form, current_user.id, "Процессор")
-        return f'Вы прошли тест на {res} данные успешно сохранены'
+        return render_template('something_wrong.html', text='Данные успешно сохранены')
     return render_template('tests.html', form=form, title='Информатика', link='computers', link2='cpu')
 
 
@@ -207,13 +213,29 @@ def registration():
     return render_template('registration.html', title='Регистрация', form=form)
 
 
+@app.route('/test-had-been-passed')
+def test_passed():
+    # если тест был пройден
+    return render_template('something_wrong.html', text='Тест уже был пройден')
+
+
 @app.route("/profile")
 def profile():
     cards = []
+    result = []
+    db_sess = create_session()
     for i in CARDS.keys():
         for j in CARDS[i]:
             cards.append(j)
-    return render_template('profile.html', title=f'{current_user.name} {current_user.surname}', cards=cards)
+            req = list(db_sess.query(Result).filter(Result.lesson_name == j.name))
+            if len(req) > 0:
+                result.append(str(req[-1].percent))
+            else:
+                result.append("не пройдено")
+    print(result)
+    return render_template('profile.html', title=f'{current_user.name} {current_user.surname}',
+                           result=result,
+                           cards=cards)
 
 
 def check_test(form, user_id, name):
