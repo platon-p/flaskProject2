@@ -282,4 +282,4 @@ def check_test(form, user_id, name):
 
 if __name__ == '__main__':
     global_init("db/project.db")
-    app.run(debug=True)
+    app.run(debug=False)
