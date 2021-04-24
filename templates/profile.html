@@ -1,13 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Профиль</title>
+    <meta name="viewport" content="width=765">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/cards.css">
+    <link rel="icon" href="static/images/shapes.svg" type="image/svg+xml">
+    <title>{{ title }}</title>
 </head>
 <body>
-<p>Пользователь {{ user.surname }} {{ user.name }}</p>
-<p>Класс обучения: {{ user.school_class }} класс</p>
-<p>Возраст: {{ user.age }} лет</p>
-<h2>Информация о пройденных тестах:</h2>
+<div class="header block">
+    <div class="inner-header">
+        <h1 class="main_h1">{{ title }}</h1>
+    </div>
+</div>
+<div class="block">
+    <h2 class="label_lessons">Информация по тестам:</h2>
+    {% for i in cards %}
+        <a href="{{ i.link }}">
+            <div class="task-card" style="background-color: {{ i.color }}">
+                <h2 class="task_label">{{ i.name }}</h2>
+                <img src="{{ url_for('static', filename='images/' + i.source) }}" class="task_image">
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+<footer>
+    <br>
+    <h4 class="footer_inf">Волгоград, 2021</h4>
+    <br>
+    <h5 class="footer_inf">Поддержка: <a href="mailto:platonpechenev@ya.ru"
+                                         style="color: white">platonpechenev@ya.ru</a></h5>
+    <br>
+</footer>
 </body>
 </html>

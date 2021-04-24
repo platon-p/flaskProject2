@@ -207,9 +207,13 @@ def registration():
     return render_template('registration.html', title='Регистрация', form=form)
 
 
-@app.route("/profile/<int:user_id>")
-def profile(user_id):
-    print(request.user_id)
+@app.route("/profile")
+def profile():
+    cards = []
+    for i in CARDS.keys():
+        for j in CARDS[i]:
+            cards.append(j)
+    return render_template('profile.html', title=f'{current_user.name} {current_user.surname}', cards=cards)
 
 
 def check_test(form, user_id, name):
