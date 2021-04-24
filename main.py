@@ -7,7 +7,7 @@ from flask_login import LoginManager, login_user, current_user, login_required, 
 from cards import *
 from data.db_session import create_session, global_init
 from data.users import User
-from data.results import association_table
+from data.results import Result
 from forms import *
 
 app = Flask(__name__)
@@ -57,6 +57,11 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
+@app.route('/enter_please')
+def enter():
+    return render_template('enter_please.html')
+
+
 @app.route('/math')
 def math_lesson():
     # переход на страницу математики
@@ -83,7 +88,6 @@ def sequences_lesson():
     for i in CARDS['math']:
         if i.link == '/math/sequences':
             # выбираем ту карточку, которая соответствует теме
-            print(current_user.id)
             return render_template('sequences.html', card=i)
     return '404 error'
 
@@ -92,8 +96,9 @@ def sequences_lesson():
 def test_sequences():
     form = TestStereometry()
     if form.validate_on_submit():
-        return 'Данные успешно сохранены'
-    return render_template('test_sequences.html', form=form)
+        res = check_test(form, current_user.id, "Последовательности")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
 
 
 @app.route('/math/stereometry')
@@ -102,41 +107,40 @@ def stereometry_lesson():
     for i in CARDS['math']:
         if i.link == '/math/stereometry':
             # выбираем ту карточку, которая соответствует теме
-            print(current_user.id)
             return render_template('stereometry.html', card=i)
     return '404 error'
 
 
 @app.route('/math/stereometry/test', methods=['GET', 'POST'])
 def test_stereometry():
-    form = SequencesTest()
+    form = TestSequences()
     if form.validate_on_submit():
-        return 'Данные успешно сохранены'
-    return render_template('test_stereometry.html', form=form)
+        res = check_test(form, current_user.id, "Стереометрия")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
 
 
 @app.route('/physics/atomic-structure')
 def atomic_structure_lesson():
     for i in CARDS['physics']:
         if i.link == '/physics/atomic-structure':
-            print(current_user.id)
             return render_template('atomic-structure.html', card=i)
     return '404 error'
 
 
 @app.route('/physics/atomic-structure/test', methods=['GET', 'POST'])
 def test_atomic_structure():
-    form = AtomTest()
+    form = TestAtom()
     if form.validate_on_submit():
-        return 'Данные успешно сохранены'
-    return render_template('tests_atomic-structure.html', form=form)
+        res = check_test(form, current_user.id, "Строение атома")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
 
 
 @app.route('/physics/elec')
 def elec_lesson():
     for i in CARDS['physics']:
         if i.link == '/physics/elec':
-            print(current_user.id)
             return render_template('elec.html', card=i)
     return '404 error'
 
@@ -145,15 +149,15 @@ def elec_lesson():
 def test_elec():
     form = TestElec()
     if form.validate_on_submit():
-        return "Данные успешно сохранены"
-    return render_template('test_elec.html', form=form)
+        res = check_test(form, current_user.id, "Электромагнитные волны")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
 
 
 @app.route('/computers/binary')
 def binary_lesson():
     for i in CARDS['computers']:
         if i.link == '/computers/binary':
-            print(current_user.id)
             return render_template('binary.html', card=i)
     return '404 error'
 
@@ -162,15 +166,15 @@ def binary_lesson():
 def test_binary():
     form = TestBinary()
     if form.validate_on_submit():
-        return 'Данные успешно сохранены'
-    return render_template('test_binary.html', form=form)
+        res = check_test(form, current_user.id, "Двоичная система")
+        return f'Вы прошли тест на {res} данные успешно сохранены'
+    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='binary')
 
 
 @app.route('/computers/cpu')
 def cpu_lesson():
     for i in CARDS['computers']:
         if i.link == '/computers/cpu':
-            print(current_user.id)
             return render_template('cpu.html', card=i)
     return '404 error'
 
@@ -179,11 +183,9 @@ def cpu_lesson():
 def test_cpu():
     form = TestCPU()
     if form.validate_on_submit():
-        # вот тут надо сделать
-        print(request.form["current_user"])
-        res = check_test(form, request.form["current_user"], "Процессор")
+        res = check_test(form, current_user.id, "Процессор")
         return f'Вы прошли тест на {res} данные успешно сохранены'
-    return render_template('test_cpu.html', form=form)
+    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='cpu')
 
 
 @app.route("/registration", methods=['POST', 'GET'])
@@ -206,7 +208,7 @@ def registration():
 
 
 @app.route("/profile/<int:user_id>")
-def profile():
+def profile(user_id):
     print(request.user_id)
 
 
@@ -214,18 +216,19 @@ def check_test(form, user_id, name):
     count = 0
     for i, j in enumerate(form):
         if len(form.answers) > i:
-            if j == form.answers[i]:
+            if j.data == form.answers[i]:
                 count += 1
         else:
             break
+    res = f"{count}/{len(form.answers)}"
     db_sess = create_session()
-    result = association_table()
+    result = Result()
     result.user_id = user_id
-    result.lessons_name = name
-    result.percent = f"{count}/{len(form.answers)}"
+    result.lesson_name = name
+    result.percent = res
     db_sess.add(result)
     db_sess.commit()
-    return f"{count}/{len(form.answers)}"
+    return res
 
 
 if __name__ == '__main__':
