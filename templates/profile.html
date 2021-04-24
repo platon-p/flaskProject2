@@ -19,7 +19,7 @@
     <h2 class="label_lessons">Информация по тестам:</h2>
     {% for i in cards %}
         <a href="{{ i.link }}">
-            <div class="task-card" style="background-color: {{ i.color }}">
+            <div class="task-card" style="background-color: {{ i.color }}; width: 80%">
                 <h2 class="task_label">{{ i.name }}</h2>
                 <img src="{{ url_for('static', filename='images/' + i.source) }}" class="task_image">
             </div>
