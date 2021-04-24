@@ -12,23 +12,23 @@
 <body>
 <div class="header block">
     {% if current_user.is_authenticated %}
-    <div class="inner-header">
-        <h1 class="main_h1">{{ title }}</h1>
-        <a href="/profile">
-            <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
-                <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
-                <h4 class="user-label">{{ current_user.name }} {{ current_user.surname }}</h4>
-            </div>
-        </a>
-    </div>
-    {# если уже вошел#}
-    {% else %}
-    <div class="inner-header">
-        <h1 class="main_h1">{{ title }}</h1>
-        <div style="display: inline-block; position: relative; float: right; line-height: 100%;">
-            <a href="/login" class="register">Войти</a>
+        <div class="inner-header">
+            <h1 class="main_h1">{{ title }}</h1>
+            <a href="/profile">
+                <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+                    <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
+                    <h4 class="user-label">{{ current_user.name }} {{ current_user.surname }}</h4>
+                </div>
+            </a>
         </div>
-    </div>
+        {# если уже вошел#}
+    {% else %}
+        <div class="inner-header">
+            <h1 class="main_h1">{{ title }}</h1>
+            <div class="my-profile" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+                <a href="/login" class="register">Войти</a>
+            </div>
+        </div>
     {% endif %}
 </div>
 <main role="main" class="container">
