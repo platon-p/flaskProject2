@@ -100,11 +100,15 @@ def sequences_lesson():
 
 @app.route('/math/sequences/test', methods=['GET', 'POST'])
 def test_sequences():
-    form = TestStereometry()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Последовательности")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
+    try:
+        form = TestStereometry()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Последовательности")
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
+            return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route('/math/stereometry')
@@ -119,11 +123,15 @@ def stereometry_lesson():
 
 @app.route('/math/stereometry/test', methods=['GET', 'POST'])
 def test_stereometry():
-    form = TestSequences()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Стереометрия")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
+    try:
+        form = TestSequences()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Стереометрия")
+            return render_template('something_wrong.html', text='Данные успешно сохранены')
+        return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route('/physics/atomic-structure')
@@ -136,11 +144,15 @@ def atomic_structure_lesson():
 
 @app.route('/physics/atomic-structure/test', methods=['GET', 'POST'])
 def test_atomic_structure():
-    form = TestAtom()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Строение атома")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
+    try:
+        form = TestAtom()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Строение атома")
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
+            return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route('/physics/elec')
@@ -153,11 +165,15 @@ def elec_lesson():
 
 @app.route('/physics/elec/test', methods=['POST', 'GET'])
 def test_elec():
-    form = TestElec()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Электромагнитные волны")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
+    try:
+        form = TestElec()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Электромагнитные волны")
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
+            return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route('/computers/binary')
@@ -170,11 +186,15 @@ def binary_lesson():
 
 @app.route('/computers/binary/test', methods=['POST', 'GET'])
 def test_binary():
-    form = TestBinary()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Двоичная система")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='binary')
+    try:
+        form = TestBinary()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Двоичная система")
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
+            return render_template('tests.html', form=form, title='Информатика', link='computers', link2='binary')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route('/computers/cpu')
@@ -187,11 +207,15 @@ def cpu_lesson():
 
 @app.route('/computers/cpu/test', methods=['POST', 'GET'])
 def test_cpu():
-    form = TestCPU()
-    if form.validate_on_submit():
-        res = check_test(form, current_user.id, "Процессор")
-        return render_template('something_wrong.html', text='Данные успешно сохранены')
-    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='cpu')
+    try:
+        form = TestCPU()
+        if current_user.id:
+            if form.validate_on_submit():
+                res = check_test(form, current_user.id, "Процессор")
+                return render_template('something_wrong.html', text='Данные успешно сохранены')
+            return render_template('tests.html', form=form, title='Информатика', link='computers', link2='cpu')
+    except Exception:
+        return redirect("/enter_please")
 
 
 @app.route("/registration", methods=['POST', 'GET'])
@@ -232,7 +256,6 @@ def profile():
                 result.append(str(req[-1].percent))
             else:
                 result.append("не пройдено")
-    print(result)
     return render_template('profile.html', title=f'{current_user.name} {current_user.surname}',
                            result=result,
                            cards=cards)
