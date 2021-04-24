@@ -57,8 +57,10 @@ class TestElec(FlaskForm):
 
 
 class RegisterForm(FlaskForm):
-    surname = StringField(render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Фамилия'})
-    name = StringField(render_kw={'class': 'user-input mail_input_field', 'placeholder': 'Имя'})
+    surname = StringField(validators=[DataRequired()],
+                          render_kw={'class': 'user-input mail_input_field necessarily', 'placeholder': 'Фамилия'})
+    name = StringField(validators=[DataRequired()],
+                       render_kw={'class': 'user-input mail_input_field necessarily', 'placeholder': 'Имя'})
     mail = StringField(validators=[DataRequired()],
                        render_kw={'class': 'user-input mail_input_field necessarily', 'placeholder': 'Почта'})
     password = PasswordField(validators=[DataRequired()],

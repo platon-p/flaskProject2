@@ -132,6 +132,11 @@ def test_atomic_structure():
     return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
 
 
+@app.route('/enter_please')
+def enter():
+    return render_template('enter_please.html')
+
+
 @app.route('/physics/elec')
 def elec_lesson():
     for i in CARDS['physics']:
