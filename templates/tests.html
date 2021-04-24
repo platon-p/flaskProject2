@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Физика</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
@@ -11,21 +11,20 @@
 </head>
 <body>
 <div class="block">
-    <a href="/physics"><h1 class="main_h1">Физика, 9 класс </h1></a>
+    <a href="/{{ link }}/{{ link2 }}"><h1 class="main_h1">{{ title }}, 9 класс </h1></a>
 </div>
 
 <div class="block">
     <div style="line-height: 1.5em;">
-        <a href="/physics">
+        <a href="/{{ link }}/{{ link2 }}">
             <img src="{{ url_for('static', filename='images/arrow.svg') }}" alt=""
                  style="width: 1.7em; vertical-align: middle">
         </a>
-        <h2 class="label_lessons" style="margin-left: 1em; display: inline-block; vertical-align: middle">Тест.
-            Строение
-            атома</h2>
+        <h2 class="label_lessons"
+            style="margin-left: 1em; display: inline-block; vertical-align: middle">{{ title }}</h2>
     </div>
 
-    <form action="" method="post">
+    <form action="" method="post" novalidate>
         <div>
             {{ form.csrf_token }}
         </div>
@@ -37,6 +36,5 @@
     </form>
     <br>
 </div>
-
 </body>
 </html>

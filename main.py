@@ -93,7 +93,7 @@ def test_sequences():
     form = TestStereometry()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
-    return render_template('test_sequences.html', form=form)
+    return render_template('tests.html', form=form, title='Математика', link='math', link2='sequences')
 
 
 @app.route('/math/stereometry')
@@ -112,7 +112,7 @@ def test_stereometry():
     form = SequencesTest()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
-    return render_template('test_stereometry.html', form=form)
+    return render_template('tests.html', form=form, title='Математика', link='math', link2='stereometry')
 
 
 @app.route('/physics/atomic-structure')
@@ -146,7 +146,7 @@ def test_elec():
     form = TestElec()
     if form.validate_on_submit():
         return "Данные успешно сохранены"
-    return render_template('test_elec.html', form=form)
+    return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
 
 
 @app.route('/computers/binary')
@@ -163,7 +163,7 @@ def test_binary():
     form = TestBinary()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
-    return render_template('test_binary.html', form=form)
+    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='binary')
 
 
 @app.route('/computers/cpu')
@@ -183,7 +183,7 @@ def test_cpu():
         print(request.form["current_user"])
         res = check_test(form, request.form["current_user"], "Процессор")
         return f'Вы прошли тест на {res} данные успешно сохранены'
-    return render_template('test_cpu.html', form=form)
+    return render_template('tests.html', form=form, title='Информатика', link='computers', link2='cpu')
 
 
 @app.route("/registration", methods=['POST', 'GET'])
@@ -206,7 +206,7 @@ def registration():
 
 
 @app.route("/profile/<int:user_id>")
-def profile():
+def profile(user_id):
     print(request.user_id)
 
 
