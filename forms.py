@@ -12,21 +12,21 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Войти', render_kw={'class': 'log_in_btn', 'style': 'width: 15em'})
 
 
-class AtomTest(FlaskForm):
+class TestAtom(FlaskForm):
     q1 = RadioField(label='1.К субатомным частицам не относится:', choices=['Протон', 'Нейтрон', 'Электрон', 'Фотон'],
                     render_kw={'class': 'radio-label'})
-    q2 = '2.Порядковый номер в таблице Менделеева соответствует:'
+    q2 = RadioField('2.Порядковый номер в таблице Менделеева соответствует:',
+                    choices=('Количеству протонов/электронов', 'Массе атома',
+                             'Количеству электронов на внешнем уровне', 'Номеру группы'),
+                    render_kw={'class': 'radio-label'})
 
-    bool1, bool2, bool3, bool4 = BooleanField('Массе атома'), BooleanField(
-        'Количеству протонов/электронов'), BooleanField('Заряду ядра'), BooleanField(
-        'Количество электронов на внешнем уровне')
     q3 = StringField(label='3.Планетарную модель атома разработал:',
                      render_kw={'class': 'mail_input_field', 'placeholder': 'Фамилия изобретателя',
                                 'style': 'line-height: 2em'})
     q4 = RadioField(label='4. Тритий - это изотоп:', choices=['Кислорода', 'Водорода', 'Гелия', 'Свинца'],
                     render_kw={'class': 'radio-label'})
     submit = SubmitField('Отправить', render_kw={'class': 'log_in_btn'})
-    answers = ('Фотон', 'False', 'True', 'True', 'False', 'Резерфорд', 'Водорода')
+    answers = ('Фотон', 'Количеству протонов/электронов', 'Резерфорд', 'Водорода')
 
 
 class TestElec(FlaskForm):
@@ -79,7 +79,7 @@ class TestBinary(FlaskForm):
     answers = ('101101', '1101011', '65', '231')
 
 
-class SequencesTest(FlaskForm):
+class TestSequences(FlaskForm):
     q1 = RadioField('Каким способом задана последовательность: "Последовательность простых чисел"',
                     choices=('Словесным', 'Рекуррентным', 'Формулой'), render_kw={'class': 'radio-label'})
     q2 = RadioField('Каким способом задана последовательность: "a_1=1; a_2=1, a_n = a_(n-1)+a_(n-2)"',

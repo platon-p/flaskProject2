@@ -14,7 +14,7 @@
     {% if current_user.is_authenticated %}
         <a href="/profile">
             <h1 class="main_h1">{{ title }}</h1>
-            <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto;">
+            <div class="my-profile card" style="padding: 0.4em 2em 0.4em 2em; width: auto; vertical-align: middle">
                 <img src="{{ url_for('static', filename='images/avatar.svg') }}" alt="" class="avatar-img">
                 <h4 class="user-label">{{ current_user.name }} {{ current_user.surname }}</h4>
             </div>

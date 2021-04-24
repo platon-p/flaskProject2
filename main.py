@@ -109,7 +109,7 @@ def stereometry_lesson():
 
 @app.route('/math/stereometry/test', methods=['GET', 'POST'])
 def test_stereometry():
-    form = SequencesTest()
+    form = TestSequences()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
     return render_template('tests.html', form=form, title='Математика', link='math', link2='stereometry')
@@ -126,10 +126,10 @@ def atomic_structure_lesson():
 
 @app.route('/physics/atomic-structure/test', methods=['GET', 'POST'])
 def test_atomic_structure():
-    form = AtomTest()
+    form = TestAtom()
     if form.validate_on_submit():
         return 'Данные успешно сохранены'
-    return render_template('tests_atomic-structure.html', form=form)
+    return render_template('tests.html', form=form, title='Физика', link='physics', link2='atomic-structure')
 
 
 @app.route('/physics/elec')
