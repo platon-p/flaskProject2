@@ -32,7 +32,7 @@ def page_not_found(e):
 
 
 @app.errorhandler(500)
-def error500():
+def error500(e):
     # обработка страницы ошибки 500
     return render_template('something_wrong.html', text='Внутренняя ошибка сервера')
 
@@ -172,7 +172,8 @@ def test_elec():
                 res = check_test(form, current_user.id, "Электромагнитные волны")
                 return render_template('something_wrong.html', text='Данные успешно сохранены')
             return render_template('tests.html', form=form, title='Физика', link='physics', link2='elec')
-    except Exception:
+    except Exception as e:
+        print(e)
         return redirect("/enter_please")
 
 
@@ -251,7 +252,8 @@ def profile():
     for i in CARDS.keys():
         for j in CARDS[i]:
             cards.append(j)
-            req = list(db_sess.query(Result).filter(Result.lesson_name == j.name))
+            req = list(
+                db_sess.query(Result).filter((Result.lesson_name == j.name), (Result.user_id == current_user.id)))
             if len(req) > 0:
                 result.append(str(req[-1].percent))
             else:
